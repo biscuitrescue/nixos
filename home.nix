@@ -72,7 +72,6 @@ animations {
     animation=specialWorkspace,1,4,overshot,slidevert
     enabled=1
 }
-
     '';
 
     settings = {
@@ -193,6 +192,8 @@ animations {
         "$mod,K,movefocus,u"
         "$mod,J,movefocus,d"
         "$mod,F,togglefloating"
+        "alt,space,movetoworkspace,special:base"
+        "alt,P,movetoworkspace,special:term"
         "$mod,space,togglespecialworkspace,base"
         "$mod,P,togglespecialworkspace,term"
         "$mod,W,fullscreen,"

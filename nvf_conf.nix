@@ -44,6 +44,7 @@
         lspkind.enable = true;
         lspsaga.enable = true;
         null-ls.enable = true;
+        # autoArchive.enable = true;
         trouble.enable = true;
       };
 
