@@ -7,10 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvf = {
-      url = "github:notashelf/nvf/3e4f99311aeec70cb769ed09564ed9d3914a0ebc";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nvf = {
+    #   url = "github:notashelf/nvf/";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
@@ -22,7 +22,6 @@
     home-manager,
     hyprland,
     zen-browser,
-    nvf,
     ...
     } @ inputs: let
       system = "x86_64-linux";
@@ -42,9 +41,8 @@
               home-manager.useUserPackages = true;
               home-manager.users.cafo = {
                 imports = [
-                  nvf.homeManagerModules.default
                   ./home.nix
-                  ./nvf_conf.nix
+		  # ./nvf.nix
                 ];
               };
               home-manager.extraSpecialArgs = {

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 let
   user = "cafo";
@@ -216,4 +216,5 @@ xdg.portal = {
       options = "--delete-older-than 7d";
     };
   };
+
 }
