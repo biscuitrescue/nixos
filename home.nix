@@ -144,6 +144,8 @@ animations {
         "$mod, D, exec, rofi -show drun"
         "$mod SHIFT,Q,exec,killall .Hyprland-wrapp"
         "$mod, Q, killactive"
+
+        "$mod, minus, exec, wayblur"
         
         ",XF86AudioNext,exec,playerctl next"
         ",XF86AudioPrev,exec,playerctl previous"
