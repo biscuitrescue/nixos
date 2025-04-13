@@ -15,12 +15,10 @@
     feh
     yazi-unwrapped
     grim
-    oreo-cursors-plus
     nautilus
     i3lock-color
     mpv
     lazygit
-    
     swaybg
     swaylock-effects
     swayidle
@@ -269,8 +267,31 @@ animations {
     EDITOR = "nvim";
   };
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    # x11.enable = true;
+    package = pkgs.oreo-cursors-plus;
+    name = "oreo_purple_cursors";
+    size = 16;
+  };
+
   gtk = {
     enable = true;
+
+    theme = {
+      package = pkgs.colloid-gtk-theme;
+      name = "Colloid-Dark";
+    };
+
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
+
+    font = {
+      name = "JetbrainsMono Nerd Font";
+      size = 11;
+    };
   };
 
   qt = {

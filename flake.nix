@@ -39,6 +39,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.backupFileExtension = "backup";
+              # home-manager.backupFileExtension = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" { env.when = self.sourceInfo.lastModified; } "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
               home-manager.useUserPackages = true;
               home-manager.users.cafo = {
                 imports = [
