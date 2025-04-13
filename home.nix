@@ -14,7 +14,7 @@
     htop
     feh
     cmatrix
-    cavalier
+    cava
     pipes-rs
     yazi-unwrapped
     grim
