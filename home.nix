@@ -11,6 +11,7 @@
 
   home.packages = with pkgs; [
     qbittorrent
+    onlyoffice-desktopeditors
     htop
     feh
     cmatrix
@@ -79,7 +80,7 @@ animations {
     '';
 
     settings = {
-      exec = [
+      exec-once = [
         "bash ./hypr/autostart.sh"
         "bash ./hypr/wallpaper.sh"
       ];
