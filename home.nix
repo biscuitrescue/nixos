@@ -63,6 +63,9 @@
     xwayland.enable = true;
 
     extraConfig = ''
+
+exec-once = ./hypr/autostart,sh
+exec-once = ./hypr/wallpaper,sh
 layerrule = blur, waybar
 
 windowrule=float,class:org.gnome.Nautilus
@@ -80,10 +83,10 @@ animations {
     '';
 
     settings = {
-      exec-once = [
-        "bash ./hypr/autostart.sh"
-        "bash ./hypr/wallpaper.sh"
-      ];
+      # exec-once = [
+      #   "bash ./hypr/autostart.sh"
+      #   "bash ./hypr/wallpaper.sh"
+      # ];
       decoration = {
         rounding = "6";
         blur = {
