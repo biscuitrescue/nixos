@@ -250,6 +250,10 @@ animations {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/waybar";
       recursive = true;
     };
+    ".config/easyeffects" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/easyeffects";
+      recursive = true;
+    };
     ".config/qtile" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/qtile";
       recursive = true;
