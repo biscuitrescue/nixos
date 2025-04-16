@@ -60,14 +60,13 @@
 
   # programs.mnw.plugins = [];
   wayland.windowManager.hyprland = {
+    systemd.variables = ["--all"];
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.enable = true;
 
     extraConfig = ''
 
-exec-once = ./hypr/autostart,sh
-exec-once = ./hypr/wallpaper,sh
 layerrule = blur, waybar
 
 windowrule=float,class:org.gnome.Nautilus
@@ -85,10 +84,16 @@ animations {
     '';
 
     settings = {
-      # exec-once = [
-      #   "bash ./hypr/autostart.sh"
-      #   "bash ./hypr/wallpaper.sh"
-      # ];
+      exec = [
+        "waybar"
+      ];
+      exec-once = [
+        "battery"
+        "nm-applet"
+        "cppswap"
+        "swayidle -w timeout 900 'wayblur' before-sleep 'wayblur'"
+        "swaybg -i ~/Pictures/wallpapers/wallmocha.png"
+      ];
       decoration = {
         rounding = "6";
         blur = {
