@@ -152,6 +152,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    spotify
     vim
     clang
     cmake
