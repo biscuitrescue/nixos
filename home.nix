@@ -11,6 +11,7 @@
 
   home.packages = with pkgs; [
     qbittorrent
+    playerctl
     easyeffects
     onlyoffice-desktopeditors
     htop
