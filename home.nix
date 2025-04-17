@@ -116,6 +116,7 @@ animations {
         force_zero_scaling = true;
       };
 
+
       input = {
         kb_layout = "us";
         # sensitivity = 0.15;
