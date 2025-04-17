@@ -10,6 +10,10 @@
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
+    foliate
+    nwg-look
+    catppuccin-gtk
+    zathura
     qbittorrent
     playerctl
     easyeffects
@@ -84,15 +88,15 @@ animations {
     '';
 
     settings = {
-      exec = [
-        "waybar"
-      ];
+      # exec = [
+      # ];
       exec-once = [
         "battery"
+        "waybar"
         "nm-applet"
         "cppswap"
         "swayidle -w timeout 900 'wayblur' before-sleep 'wayblur'"
-        "swaybg -i ~/Pictures/wallpapers/wallmocha.png"
+        "swaybg -i ~/Pictures/wallpapers/woods.png"
       ];
       decoration = {
         rounding = "6";
@@ -228,6 +232,10 @@ animations {
     };
   };
   home.file = {
+    ".config/zathura" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/zathura";
+      recursive = true;
+    };
     ".config/dunst" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/dunst";
       recursive = true;
@@ -318,9 +326,13 @@ animations {
   qt = {
     enable = true;
 
-    platformTheme.name = "qtct";
+    platformTheme.name = "kvantum";
 
     style.name = "kvantum";
+  };
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
   };
 
   xdg.configFile = {

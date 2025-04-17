@@ -12,6 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin.url = "github:catppuccin/nix";
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
@@ -23,6 +24,7 @@
     hyprland,
     zen-browser,
     nvf,
+    catppuccin,
     ...
     } @ inputs: let
       system = "x86_64-linux";
@@ -44,6 +46,7 @@
               home-manager.users.cafo = {
                 imports = [
                   nvf.homeManagerModules.default
+                  catppuccin.homeModules.catppuccin
                   ./home.nix
                   ./nvf_conf.nix
                 ];
