@@ -105,6 +105,27 @@
 
       keymaps = [
       {
+        key = "<C-Del>";
+        mode = ["n" "x" "i" "v"];
+        desc = "delete word";
+        silent = true;
+        action = "<C-o>dw";
+      }
+      {
+        key = "<C-BS>";
+        mode = ["n" "x" "i" "v"];
+        desc = "delete word";
+        silent = true;
+        action = "<C-o>db";
+      }
+      {
+        key = "<C-BS>";
+        mode = ["n" "x" "i" "v"];
+        desc = "delete word";
+        silent = true;
+        action = "<C-o>db";
+      }
+      {
         key = "<C-n>";
         mode = ["n" "x" "i" "v"];
         desc = "Toggle Neo-Tree";

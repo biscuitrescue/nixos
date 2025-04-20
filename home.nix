@@ -25,6 +25,7 @@
     pipes-rs
     yazi-unwrapped
     grim
+    wl-clipboard
     nautilus
     i3lock-color
     mpv
@@ -39,7 +40,7 @@
     eza
     git
     kitty
-    wl-clipboard
+    slurp
     rofi
     light
     alsa-utils
@@ -88,15 +89,15 @@ animations {
     '';
 
     settings = {
-      # exec = [
-      # ];
+      exec = [
+        "swaybg -i ~/Pictures/wallpapers/Darth_vader.png"
+      ];
       exec-once = [
         "battery"
         "waybar"
         "nm-applet"
         "cppswap"
         "swayidle -w timeout 900 'wayblur' before-sleep 'wayblur'"
-        "swaybg -i ~/Pictures/wallpapers/woods.png"
       ];
       decoration = {
         rounding = "6";
@@ -116,7 +117,7 @@ animations {
         force_zero_scaling = true;
       };
 
-
+      cursor.no_hardware_cursors = 1;
       input = {
         kb_layout = "us";
         # sensitivity = 0.15;
