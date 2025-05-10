@@ -10,6 +10,7 @@
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
+    btop
     foliate
     nwg-look
     catppuccin-gtk
@@ -63,7 +64,20 @@
     inputs.zen-browser.packages."${system}".default
   ];
 
-  # programs.mnw.plugins = [];
+  # services.mako.extraConfig = "...";
+  # services.mako= {
+  #   enable = true;
+  #   settings = {
+  #     backgroundColor = "#1e1e2eff";
+  #     borderColor = "#aed1dcff";
+  #     borderRadius = 10;
+  #     borderSize = 2;
+  #     defaultTimeout = 2500;
+  #     font = "JetbrainsMono Nerd Font 11";
+  #     anchor = "top-center";
+  #   };
+  # };
+
   wayland.windowManager.hyprland = {
     systemd.variables = ["--all"];
     enable = true;

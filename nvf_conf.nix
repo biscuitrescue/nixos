@@ -88,15 +88,13 @@
       filetree.neo-tree= {
         enable = true;
         setupOpts.filesystem.hijack_netrw_behavior = "disabled";
-# mappings.toggle = "<C-n>";
-# openOnSetup = false;
       };
 
       git = {
         enable = true;
 
         gitlinker-nvim.enable = false;
-# git-conflict.enable = true;
+        git-conflict.enable = true;
       };
 
       globals = {
