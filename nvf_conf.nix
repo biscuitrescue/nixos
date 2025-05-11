@@ -266,7 +266,6 @@
       };
 
       languages = {
-        enableLSP = true;
         enableTreesitter = true;
         clang.enable = true;
         nix.enable = true;
