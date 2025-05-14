@@ -5,7 +5,12 @@
   programs.nvf = {
     enable = true;
     settings.vim = {
-      useSystemClipboard = true;
+      clipboard = {
+        registers = "unnamedplus";
+        providers.wl-copy.enable = true;
+        providers.wl-copy.package = true;
+        providers.xclip.enable = true;
+      };
       options = {
         shiftwidth = 2;
         ignorecase = true;
