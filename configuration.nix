@@ -167,6 +167,8 @@ in
     zip
     glib
     brave
+    exfat
+    exfatprogs
     gnumake
     killall
     pulseaudio

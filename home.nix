@@ -11,6 +11,7 @@
 
   home.packages = with pkgs; [
     btop
+    spotify-player
     foliate
     nwg-look
     catppuccin-gtk
