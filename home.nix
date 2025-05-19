@@ -11,6 +11,7 @@
 
   home.packages = with pkgs; [
     btop
+    pavucontrol
     spotify-player
     evince
     foliate
