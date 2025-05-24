@@ -178,50 +178,54 @@ in
 
   fonts.fontDir.enable = true;
 
-programs.gnupg.agent = {
-  enable = true;
-  enableSSHSupport = true;
-};
-
-services.dbus.enable = true;
-xdg.portal = {
-  enable = true;
-  extraPortals = [
-    pkgs.xdg-desktop-portal-gtk
-  ];
-};
-
-# Open ports in the firewall.
-# networking.firewall.allowedTCPPorts = [ ... ];
-# networking.firewall.allowedUDPPorts = [ ... ];
-# Or disable the firewall altogether.
-# networking.firewall.enable = false;
-
-
-
-  security = {
-    polkit.enable = true;
-    sudo.extraConfig = "%wheel ALL= NOPASSWD: /usr/bin/systemctl, /usr/bin/swapon, /usr/bin/swapoff, /usr/bin/rfkill, /etc/profiles/per-user/cafo/bin/light\nDefaults env_reset, pwfeedback";
-  };
-  system.stateVersion = "25.05"; # Did you read the comment?
-
-  system.autoUpgrade = {
+  programs.gnupg.agent = {
     enable = true;
-    channel = "https://nixos.org/channels/nixos-unstable";
-    dates = "daily";
+    enableSSHSupport = true;
   };
 
-  nix = {
-    settings = {
-      auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
-      flake-registry = "";
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
+  services.samba = {
+    enable = true;
   };
 
-}
+  services.dbus.enable = true;
+    xdg.portal = {
+      enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+      ];
+    };
+
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
+
+
+
+    security = {
+      polkit.enable = true;
+      sudo.extraConfig = "%wheel ALL= NOPASSWD: /usr/bin/systemctl, /usr/bin/swapon, /usr/bin/swapoff, /usr/bin/rfkill, /etc/profiles/per-user/cafo/bin/light\nDefaults env_reset, pwfeedback";
+    };
+    system.stateVersion = "25.05"; # Did you read the comment?
+
+    system.autoUpgrade = {
+      enable = true;
+      channel = "https://nixos.org/channels/nixos-unstable";
+      dates = "daily";
+    };
+
+    nix = {
+      settings = {
+        auto-optimise-store = true;
+        experimental-features = [ "nix-command" "flakes" ];
+        flake-registry = "";
+      };
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
+      };
+    };
+
+  }
