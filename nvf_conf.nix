@@ -6,9 +6,9 @@
     enable = true;
     settings.vim = {
       clipboard = {
+        enable = true;
         registers = "unnamedplus";
         providers.wl-copy.enable = true;
-        providers.wl-copy.package = true;
         providers.xclip.enable = true;
       };
       options = {
