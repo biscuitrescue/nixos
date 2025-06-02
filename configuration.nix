@@ -166,6 +166,8 @@ in
     unzip
     zip
     glib
+    baobab
+    bleachbit
     brave
     exfat
     exfatprogs
