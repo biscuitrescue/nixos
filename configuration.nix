@@ -161,6 +161,7 @@ in
     clang
     cmake
     llvmPackages_20.clang-tools
+    nmap
     gcc
     wget
     unzip

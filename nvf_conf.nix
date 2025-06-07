@@ -38,6 +38,12 @@
         conceallevel = 2;
       };
 
+      # notes.obsidian = {
+      #   enable = true;
+      #   setupOpts.daily_notes.folder = ''
+      #     /home/cafo/Documents/Notes/'';
+      # };
+
       viAlias = false;
       vimAlias = true;
       lsp = {
@@ -300,6 +306,7 @@
       };
 
       utility.preview.glow.enable = true;
+      utility.snacks-nvim.enable = true;
       visuals = {
         indent-blankline.enable = true;
         indent-blankline.setupOpts.scope.enabled = true;

@@ -11,6 +11,7 @@
 
   home.packages = with pkgs; [
     btop
+    obsidian
     pavucontrol
     spotify-player
     evince
@@ -337,7 +338,7 @@ animations {
     };
 
     font = {
-      name = "JetbrainsMono Nerd Font";
+      name = "Zed Mono Extended";
       size = 11;
     };
   };
