@@ -7,7 +7,7 @@
 }: {
   home.username = "cafo";
   home.homeDirectory = "/home/cafo";
-  home.stateVersion = "25.05"; # Please read the comment before changing.
+  home.stateVersion = "25.05";
 
   home.packages = with pkgs; [
     btop
@@ -77,10 +77,10 @@
       splash_offset = 2.0;
 
       preload =
-        [ "/home/cafo/git/wallpapers/keyboard.png" ];
+        [ "/home/cafo/git/wallpapers/girl.png" ];
 
       wallpaper = [
-        "eDP-1, /home/cafo/git/wallpapers/keyboard.png"
+        "eDP-1, /home/cafo/git/wallpapers/girl.png"
       ]; 
     };
   };
