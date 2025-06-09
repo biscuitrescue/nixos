@@ -65,6 +65,7 @@
     tmux
     xss-lock
     libnotify
+    hyprpaper
     inputs.zen-browser.packages."${system}".default
   ];
 
@@ -76,11 +77,10 @@
       splash_offset = 2.0;
 
       preload =
-        [ "share/wallpapers/buttons.png" "share/wallpapers/cat_pacman.png" ];
+        [ "/home/cafo/git/wallpapers/keyboard.png" ];
 
       wallpaper = [
-        "DP-3,/share/wallpapers/buttons.png"
-        "DP-1,/share/wallpapers/cat_pacman.png"
+        "eDP-1, /home/cafo/git/wallpapers/keyboard.png"
       ]; 
     };
   };
@@ -123,9 +123,9 @@ animations {
     '';
 
     settings = {
-      exec = [
-        "swaybg -i ~/Pictures/wallpapers/Darth_vader.png"
-      ];
+      # exec = [
+        # "swaybg -i ~/Pictures/wallpapers/Darth_vader.png"
+      # ];
       exec-once = [
         "battery"
         "waybar"
@@ -292,10 +292,10 @@ animations {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/fish";
       recursive = true;
     };
-    # ".config/mako" = {
-    #   source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/mako";
-    #   recursive = true;
-    # };
+    ".config/mako" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/mako";
+      recursive = true;
+    };
     ".config/waybar" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/waybar";
       recursive = true;
