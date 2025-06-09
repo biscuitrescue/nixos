@@ -114,8 +114,8 @@ in
       };
     };
     gnome.gnome-keyring.enable = true;
-    openssh.enable = true;
-    printing.enable = true;
+    openssh.enable = false;
+    printing.enable = false;
     pulseaudio.enable = false;
     pipewire = {
       enable = true;
@@ -148,7 +148,7 @@ in
   users.users.${user}= {
     isNormalUser = true;
     description = "Karttikeya Sinha";
-    extraGroups = [ "wheel" "audio" "input" "video" "networkmanager" "lp" "scanner" "kvm"]; 
+    extraGroups = [ "wheel" "audio" "input" "video" "networkmanager" "lp" "scanner" "kvm" "libvirtd"]; 
     shell = pkgs.fish;
     # packages = with pkgs; [
     #
@@ -160,6 +160,7 @@ in
     vim
     clang
     cmake
+    obsidian
     llvmPackages_20.clang-tools
     nmap
     gcc
@@ -178,6 +179,11 @@ in
     ntfs3g
     python3Full
   ];
+
+  programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = ["cafo"];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 
   fonts.fontDir.enable = true;
 

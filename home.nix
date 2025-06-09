@@ -11,7 +11,7 @@
 
   home.packages = with pkgs; [
     btop
-    obsidian
+    zed-editor
     pavucontrol
     spotify-player
     evince
@@ -68,6 +68,22 @@
     inputs.zen-browser.packages."${system}".default
   ];
 
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = "on";
+      splash = false;
+      splash_offset = 2.0;
+
+      preload =
+        [ "share/wallpapers/buttons.png" "share/wallpapers/cat_pacman.png" ];
+
+      wallpaper = [
+        "DP-3,/share/wallpapers/buttons.png"
+        "DP-1,/share/wallpapers/cat_pacman.png"
+      ]; 
+    };
+  };
   # services.mako.extraConfig = "...";
   # services.mako= {
   #   enable = true;
@@ -276,10 +292,10 @@ animations {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/fish";
       recursive = true;
     };
-    ".config/mako" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/mako";
-      recursive = true;
-    };
+    # ".config/mako" = {
+    #   source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/mako";
+    #   recursive = true;
+    # };
     ".config/waybar" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/waybar";
       recursive = true;
@@ -287,6 +303,9 @@ animations {
     ".config/easyeffects" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/easyeffects";
       recursive = true;
+    };
+    ".config/starship.toml" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/starship.toml";
     };
     ".config/qtile" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/qtile";
@@ -362,6 +381,13 @@ animations {
     '';
 
     "Kvantum/GraphiteNord".source = "${pkgs.graphite-kde-theme}/share/Kvantum/GraphiteNord";
+  };
+
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
   };
 
   programs.home-manager.enable = true;

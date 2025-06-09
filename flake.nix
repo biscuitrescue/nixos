@@ -52,8 +52,8 @@
                 ];
               };
               home-manager.extraSpecialArgs = {
-                inherit inputs;
-                system = "x86_64-linux";
+                inherit inputs system;
+                pkgs = nixpkgs.legacyPackages.${system};
               };
             }
           ];

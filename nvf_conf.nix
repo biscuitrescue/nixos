@@ -1,4 +1,5 @@
 {
+  pkgs,
   ...
 }: {
 
@@ -59,11 +60,24 @@
         trouble.enable = true;
       };
 
+      extraPlugins = {
+        kanagawa= {
+          package = pkgs.vimPlugins.kanagawa-nvim;
+          setup = "require('kanagawa').setup {}";
+        };
+      };
+      luaConfigPost = ''
+      require("kanagawa").setup({
+        style = "dragon",
+        transparent = true,
+      })
+      vim.cmd("colorscheme kanagawa-dragon")
+      '';
+
       theme = {
-        enable = true;
-        name = "catppuccin";
-        style = "mocha";
-        transparent = true;
+        enable = false;
+        # name = "kanagawa";
+        # transparent = true;
       };
 
       statusline.lualine.enable = true;
@@ -324,8 +338,6 @@
       };
 
       withPython3 = true;
-
     };
-
   };
 }
