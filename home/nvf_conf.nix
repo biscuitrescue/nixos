@@ -67,12 +67,19 @@
         };
       };
       luaConfigPost = ''
-      require("kanagawa").setup({
-        style = "dragon",
-        transparent = true,
-      })
-      vim.cmd("colorscheme kanagawa-dragon")
-      '';
+  -- Global replace word under cursor
+  vim.api.nvim_create_user_command("ReplaceWordUnderCursor", function()
+    local word = vim.fn.expand("<cword>")
+    vim.cmd("let @/ = '\\<" .. word .. "\\>'")
+    vim.cmd("call feedkeys(':%s/\\<" .. word .. "\\>/', 'n')")
+  end, {})
+
+  require("kanagawa").setup({
+    style = "dragon",
+    transparent = true,
+  })
+  vim.cmd("colorscheme kanagawa-dragon")
+'';
 
       theme = {
         enable = false;
@@ -101,9 +108,9 @@
         };
       };
 
-# autopairs.nvim-autopairs.enable = true;
+      # autopairs.nvim-autopairs.enable = true;
       binds.whichKey.enable = true;
-# comments.comment-nvim.enable = true;
+      # comments.comment-nvim.enable = true;
       dashboard.alpha.enable = true;
 
       diagnostics.nvim-lint = {
@@ -127,41 +134,48 @@
       };
 
       keymaps = [
-      {
-        key = "<C-Del>";
-        mode = ["n" "x" "i" "v"];
-        desc = "delete word";
-        silent = true;
-        action = "<C-o>dw";
-      }
-      {
-        key = "<C-BS>";
-        mode = ["n" "x" "i" "v"];
-        desc = "delete word";
-        silent = true;
-        action = "<C-o>db";
-      }
-      {
-        key = "<C-BS>";
-        mode = ["n" "x" "i" "v"];
-        desc = "delete word";
-        silent = true;
-        action = "<C-o>db";
-      }
-      {
-        key = "<C-n>";
-        mode = ["n" "x" "i" "v"];
-        desc = "Toggle Neo-Tree";
-        silent = true;
-        action = ":Neotree toggle<CR>";
-      }
-      {
-        key = "<leader>s";
-        desc = "Global Replace";
-        mode = "n";
-        silent = true;
-        action = ":%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>";
-      }
+        {
+          key = "<C-Del>";
+          mode = ["n" "x" "i" "v"];
+          desc = "delete word";
+          silent = true;
+          action = "<C-o>dw";
+        }
+        {
+          key = "<C-BS>";
+          mode = ["n" "x" "i" "v"];
+          desc = "delete word";
+          silent = true;
+          action = "<C-o>db";
+        }
+        {
+          key = "<C-BS>";
+          mode = ["n" "x" "i" "v"];
+          desc = "delete word";
+          silent = true;
+          action = "<C-o>db";
+        }
+        {
+          key = "<C-n>";
+          mode = ["n" "x" "i" "v"];
+          desc = "Toggle Neo-Tree";
+          silent = true;
+          action = ":Neotree toggle<CR>";
+        }
+        {
+          key = "<leader>s";
+          desc = "Global Replace";
+          mode = "n";
+          silent = false;
+          action = ":ReplaceWordUnderCursor<CR>";
+        }
+      #   {
+      #     key = "<leader>s";
+      #   desc = "Global Replace";
+      #   mode = "n";
+      #   silent = true;
+      #   action = ":%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>";
+      # }
       {
         key = "<leader>wq";
         desc = "Quit Window";

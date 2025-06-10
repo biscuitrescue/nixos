@@ -15,7 +15,6 @@
       margin = 10;
       icons = true;
       actions = true;
-      height = 1000;
     };
   };
 }
