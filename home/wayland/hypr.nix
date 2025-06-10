@@ -35,7 +35,7 @@ animations {
         "waybar"
         "nm-applet"
         "cppswap"
-        # "swayidle -w timeout 900 'wayblur' before-sleep 'wayblur'"
+        "swayidle -w timeout 900 'wayblur' before-sleep 'wayblur'"
       ];
       decoration = {
         rounding = "6";
