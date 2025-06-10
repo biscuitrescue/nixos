@@ -52,6 +52,7 @@
                   ./home/wayland/hypr.nix
                   ./home/wayland/hyprpaper.nix
                   ./home/wayland/mako.nix
+                  ./home/wayland/hypridle.nix
                 ];
               };
               home-manager.extraSpecialArgs = {
