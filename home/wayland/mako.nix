@@ -11,7 +11,11 @@
       default-timeout = 2500;
       font = "JetbrainsMono Nerd Font 11";
       anchor = "top-center";
-      margin = 30;
+      margin = 10;
+      height = 1000;
+      width = 1000;
+      icons = true;
+      actions = true;
     };
   };
 }
