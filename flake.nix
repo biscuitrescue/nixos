@@ -49,10 +49,10 @@
                   catppuccin.homeModules.catppuccin
                   ./home/home.nix
                   ./home/nvf_conf.nix
-                  ./home/wayland/hypr.nix
-                  ./home/wayland/hyprpaper.nix
+                  ./home/wayland/hypr/hypr.nix
+                  ./home/wayland/hypr/hyprpaper.nix
+                  ./home/wayland/hypr/hypridle.nix
                   ./home/wayland/mako.nix
-                  ./home/wayland/hypridle.nix
                 ];
               };
               home-manager.extraSpecialArgs = {
