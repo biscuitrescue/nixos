@@ -50,6 +50,8 @@
                   ./home/home.nix
                   ./home/nvf_conf.nix
                   ./home/wayland/hypr.nix
+                  ./home/wayland/hyprpaper.nix
+                  ./home/wayland/mako.nix
                 ];
               };
               home-manager.extraSpecialArgs = {

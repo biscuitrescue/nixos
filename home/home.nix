@@ -65,38 +65,8 @@
     tmux
     xss-lock
     libnotify
-    hyprpaper
     inputs.zen-browser.packages."${system}".default
   ];
-
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      ipc = "on";
-      splash = false;
-      splash_offset = 2.0;
-
-      preload =
-        [ "/home/cafo/git/wallpapers/chaos_rose.png" ];
-
-      wallpaper = [
-        "eDP-1, /home/cafo/git/wallpapers/chaos_rose.png"
-      ]; 
-    };
-  };
-  services.mako.extraConfig = "...";
-  services.mako= {
-    enable = true;
-    settings = {
-      backgroundColor = "#1e1e2eff";
-      borderColor = "#aed1dcff";
-      borderRadius = 10;
-      borderSize = 2;
-      defaultTimeout = 2500;
-      font = "JetbrainsMono Nerd Font 11";
-      anchor = "top-center";
-    };
-  };
 
   home.file = {
     ".config/zathura" = {
@@ -202,6 +172,7 @@
   };
   catppuccin = {
     enable = true;
+    mako.enable = false;
     flavor = "mocha";
   };
 
