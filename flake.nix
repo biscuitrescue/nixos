@@ -49,6 +49,7 @@
                   catppuccin.homeModules.catppuccin
                   ./home.nix
                   ./nvf_conf.nix
+                  ./hypr.nix
                 ];
               };
               home-manager.extraSpecialArgs = {
