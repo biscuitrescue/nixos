@@ -66,10 +66,15 @@
     tmux
     xss-lock
     libnotify
+    ranger
     inputs.zen-browser.packages."${system}".default
   ];
 
   home.file = {
+    ".config/ranger" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/ranger";
+      recursive = true;
+    };
     ".config/zathura" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/zathura";
       recursive = true;
@@ -128,6 +133,20 @@
       };
     };
   };
+
+  # programs.ranger = {
+  #   enable = true;
+  #   settings = {
+  #     view_mode = "miller";
+  #     preview_images = true;
+  #     preview_images_method = "kitty";
+  #     column_ratios = "1,3,3";
+  #     flushinput = true;
+  #     confirm_on_delete = "never";
+  #     scroll_offset = 8;
+  #     unicode_ellipsis = true;
+  #   };
+  # };
 
   programs.neovim = {
     enable = true;

@@ -338,6 +338,15 @@
       };
 
       withPython3 = true;
+      navigation.harpoon = {
+        enable = true;
+        mappings = {
+          file1 = "<C-1>";
+          file2 = "<C-2>";
+          file3 = "<C-3>";
+          file4 = "<C-4>";
+        };
+      };
     };
   };
 }
