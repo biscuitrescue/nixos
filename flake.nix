@@ -36,7 +36,7 @@
         cafo = lib.nixosSystem {
           inherit system;
           modules = [
-            ./configuration.nix
+            ./nixos/configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -47,9 +47,9 @@
                 imports = [
                   nvf.homeManagerModules.default
                   catppuccin.homeModules.catppuccin
-                  ./home.nix
-                  ./nvf_conf.nix
-                  ./hypr.nix
+                  ./home/home.nix
+                  ./home/nvf_conf.nix
+                  ./home/wayland/hypr.nix
                 ];
               };
               home-manager.extraSpecialArgs = {
