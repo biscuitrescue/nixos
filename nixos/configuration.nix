@@ -136,9 +136,20 @@ in
   #   };
   # };
 
-  programs.fish.enable = true;
-  programs.firefox.enable = true;
-  programs.nix-ld.enable = true;
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors = {
+      hyprland = {
+        prettyName = "Hyprland";
+        comment = "Hyprland compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/Hyprland";
+      };
+    };
+  };
+  programs.hyprland.withUWSM = true;
+    programs.fish.enable = true;
+    programs.firefox.enable = true;
+    programs.nix-ld.enable = true;
   programs.hyprland.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -215,6 +226,7 @@ in
     security = {
       polkit.enable = true;
       sudo.extraConfig = "%wheel ALL= NOPASSWD: /usr/bin/systemctl, /usr/bin/swapon, /usr/bin/swapoff, /usr/bin/rfkill, /etc/profiles/per-user/cafo/bin/light\nDefaults env_reset, pwfeedback";
+      pam.services.hyprlock = { };
     };
     system.stateVersion = "25.05"; # Did you read the comment?
 

@@ -13,6 +13,7 @@
     btop
     zed-editor
     pavucontrol
+    hypridle
     spotify-player
     evince
     foliate
@@ -173,6 +174,7 @@
   catppuccin = {
     enable = true;
     mako.enable = false;
+    hyprlock.enable = false;
     flavor = "mocha";
   };
 

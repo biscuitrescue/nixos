@@ -9,13 +9,12 @@
       border-radius = 10;
       border-size = 2;
       default-timeout = 2500;
-      font = "JetbrainsMono Nerd Font 11";
+      font = "JetbrainsMono Nerd Font 13";
       anchor = "top-center";
       margin = 10;
-      height = 1000;
-      width = 1000;
       icons = true;
       actions = true;
+      height = 1000;
     };
   };
 }
