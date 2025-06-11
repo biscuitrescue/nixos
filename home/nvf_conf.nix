@@ -78,13 +78,13 @@
     style = "dragon",
     transparent = true,
   })
-  vim.cmd("colorscheme kanagawa-dragon")
+  -- vim.cmd("colorscheme kanagawa-dragon")
 '';
 
       theme = {
-        enable = false;
-        # name = "kanagawa";
-        # transparent = true;
+        enable = true;
+        name = "dracula";
+        transparent = true;
       };
 
       statusline.lualine.enable = true;
