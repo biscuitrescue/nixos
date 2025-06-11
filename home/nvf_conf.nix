@@ -78,11 +78,11 @@
     style = "dragon",
     transparent = true,
   })
-  -- vim.cmd("colorscheme kanagawa-dragon")
+  vim.cmd("colorscheme kanagawa-dragon")
 '';
 
       theme = {
-        enable = true;
+        enable = false;
         name = "dracula";
         transparent = true;
       };
