@@ -101,10 +101,13 @@
       autocomplete = {
         enableSharedCmpSources = true;
         blink-cmp = {
-          enable = true;
+          enable = false;
           friendly-snippets.enable = true;
           sourcePlugins.emoji.enable = true;
           sourcePlugins.ripgrep.enable = true;
+        };
+        nvim-cmp = {
+          enable = true;
         };
       };
 
@@ -355,10 +358,10 @@
       navigation.harpoon = {
         enable = true;
         mappings = {
-          file1 = "<C-1>";
-          file2 = "<C-2>";
-          file3 = "<C-3>";
-          file4 = "<C-4>";
+          file1 = "<leader>1";
+          file2 = "<leader>2";
+          file3 = "<leader>3";
+          file4 = "<leader>4";
         };
       };
     };
