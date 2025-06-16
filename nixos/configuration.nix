@@ -179,6 +179,7 @@ in
     unzip
     zip
     glib
+    veracrypt
     baobab
     bleachbit
     brave
