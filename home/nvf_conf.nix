@@ -83,8 +83,9 @@
 
       theme = {
         enable = false;
-        name = "dracula";
-        transparent = true;
+        name = "oxocarbon";
+        transparent = false;
+        style = "dark";
       };
 
       statusline.lualine.enable = true;

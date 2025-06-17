@@ -10,6 +10,8 @@
   home.stateVersion = "25.05";
 
   home.packages = with pkgs; [
+    busybox
+    ardour
     btop
     zed-editor
     pavucontrol

@@ -167,6 +167,8 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    vivaldi
+    vivaldi-ffmpeg-codecs
     spotify
     vim
     clang
