@@ -83,9 +83,9 @@
 
       theme = {
         enable = true;
-        name = "dracula";
+        name = "catppuccin";
         transparent = true;
-        # style = "mocha";
+        style = "mocha";
       };
 
       statusline.lualine.enable = true;
