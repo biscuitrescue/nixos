@@ -136,6 +136,7 @@ in
   #   };
   # };
 
+  programs.command-not-found.enable = true;
   programs.uwsm = {
     enable = true;
     waylandCompositors = {
@@ -185,6 +186,7 @@ in
     baobab
     bleachbit
     brave
+    tcpdump
     exfat
     exfatprogs
     gnumake

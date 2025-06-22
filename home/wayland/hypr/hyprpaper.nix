@@ -9,10 +9,10 @@
       splash_offset = 2.0;
 
       preload =
-        [ "/home/cafo/git/wallpapers/ign_leafHelmet_grainy.png" ];
+        [ "/home/cafo/git/wallpapers/ign_colorful.png" ];
 
       wallpaper = [
-        "eDP-1, /home/cafo/git/wallpapers/ign_leafHelmet_grainy.png"
+        "eDP-1, /home/cafo/git/wallpapers/ign_colorful.png"
       ]; 
     };
   };
