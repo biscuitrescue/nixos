@@ -83,13 +83,13 @@
 
       theme = {
         enable = true;
-        name = "catppuccin";
+        name = "dracula";
         transparent = true;
-        style = "mocha";
+        # style = "mocha";
       };
 
       statusline.lualine.enable = true;
-      telescope.enable = true;
+      # telescope.enable = true;
 
       terminal.toggleterm = {
         enable = true;
@@ -115,7 +115,6 @@
       # autopairs.nvim-autopairs.enable = true;
       binds.whichKey.enable = true;
       # comments.comment-nvim.enable = true;
-      dashboard.alpha.enable = true;
 
       diagnostics.nvim-lint = {
         enable = true;
@@ -160,14 +159,168 @@
           action = "<C-o>db";
         }
         {
-          key = "<C-n>";
+          key = "<leader>n";
           mode = ["n" "x" "i" "v"];
-          desc = "Toggle Neo-Tree";
+          desc = "Notification history";
           silent = true;
-          action = ":Neotree toggle<CR>";
+          action = ":lua Snacks.picker.notifications()<CR>";
         }
         {
-          key = "<leader>s";
+          key = "<leader>/";
+          mode = ["n" "x" "i" "v"];
+          desc = "Snacks grep";
+          silent = true;
+          action = ":lua Snacks.picker.grep()<CR>";
+        }
+        {
+          key = "<leader>sd";
+          mode = ["n" "x" "i" "v"];
+          desc = "Diagnostics";
+          silent = true;
+          action = ":lua Snacks.picker.diagnostics()<CR>";
+        }
+        {
+          key = "<leader>fb";
+          mode = ["n" "x" "i" "v"];
+          desc = "Snacks Buffer";
+          silent = true;
+          action = ":lua Snacks.picker.buffers()<CR>";
+        }
+        {
+          key = "<leader>f.";
+          mode = ["n" "x" "i" "v"];
+          desc = "Recents";
+          silent = true;
+          action = ":lua Snacks.picker.recent({filter = {cwd = true}})<CR>";
+        }
+        {
+          key = "<leader>fg";
+          mode = ["n" "x" "i" "v"];
+          desc = "Git files";
+          silent = true;
+          action = ":lua Snacks.picker.git_files()<CR>";
+        }
+        {
+          key = "<leader>sb";
+          mode = ["n" "x" "i" "v"];
+          desc = "Buffer Lines";
+          silent = true;
+          action = ":lua Snacks.picker.lines()<CR>";
+        }
+        {
+          key = "<leader>bd";
+          mode = ["n" "x" "i" "v"];
+          desc = "Delete Buffer";
+          silent = true;
+          action = ":lua Snacks.bufdelete()<CR>";
+        }
+        {
+          key = "<leader>b.";
+          mode = ["n" "x" "i" "v"];
+          desc = "Toggle Scratch Buffer";
+          silent = true;
+          action = ":lua Snacks.scratch()<CR>";
+        }
+        {
+          key = "<leader>S";
+          mode = ["n" "x" "i" "v"];
+          desc = "Select Scratch Buffer";
+          silent = true;
+          action = ":lua Snacks.scratch.select()<CR>";
+        }
+        {
+          key = "<leader>cR";
+          mode = ["n" "x" "i" "v"];
+          desc = "Rename File";
+          silent = true;
+          action = ":lua Snacks.rename.rename_file()<CR>";
+        }
+        {
+          key = "<leader>z";
+          mode = ["n" "x" "i" "v"];
+          desc = "Toggle Zen mode";
+          silent = true;
+          action = ":lua Snacks.zen()<CR>";
+        }
+        {
+          key = "<leader>Z";
+          mode = ["n" "x" "i" "v"];
+          desc = "Toggle Zen Zoom";
+          silent = true;
+          action = ":lua Snacks.zen.zoom()<CR>";
+        }
+        {
+          key = "gI";
+          mode = ["n" "x" "i" "v"];
+          desc = "Goto T[y]pe Definition";
+          silent = true;
+          action = ":lua Snacks.picker.lsp_type_definitions()<CR>";
+        }
+        {
+          key = "gI";
+          mode = ["n" "x" "i" "v"];
+          desc = "Goto Implementations";
+          silent = true;
+          action = ":lua Snacks.picker.lsp_implementations()<CR>";
+        }
+        {
+          key = "gr";
+          mode = ["n" "x" "i" "v"];
+          desc = "References";
+          silent = true;
+          action = ":lua Snacks.picker.lsp_references()<CR>";
+        }
+        {
+          key = "gD";
+          mode = ["n" "x" "i" "v"];
+          desc = "Goto declaration";
+          silent = true;
+          action = ":lua Snacks.picker.lsp_declarations()<CR>";
+        }
+        {
+          key = "gd";
+          mode = ["n" "x" "i" "v"];
+          desc = "Goto definition";
+          silent = true;
+          action = ":lua Snacks.picker.lsp_definitions()<CR>";
+        }
+        {
+          key = "<leader>f,";
+          mode = ["n" "x" "i" "v"];
+          desc = "Files";
+          silent = true;
+          action = ":lua Snacks.picker.files()<CR>";
+        }
+        {
+          key = "<leader>ff";
+          mode = ["n" "x" "i" "v"];
+          desc = "Smart Picker";
+          silent = true;
+          action = ":lua Snacks.picker.smart()<CR>";
+        }
+        {
+          key = "<leader>sr";
+          mode = ["n" "x" "i" "v"];
+          desc = "Resumee";
+          silent = true;
+          action = ":lua Snacks.picker.resume()<CR>";
+        }
+        {
+          key = "<leader>su";
+          mode = ["n" "x" "i" "v"];
+          desc = "Undo Tree";
+          silent = true;
+          action = ":lua Snacks.picker.undo()<CR>";
+        }
+        {
+          key = "<C-n>";
+          mode = ["n" "x" "i" "v"];
+          desc = "Toggle Explorer";
+          silent = true;
+          action = ":lua Snacks.explorer()<CR>";
+        }
+        {
+          key = "<C-s>";
           desc = "Global Replace";
           mode = "n";
           silent = false;
@@ -322,9 +475,8 @@
         pairs.enable = true;
         basics.enable = true;
         surround.enable = true;
-        indentscope.enable = true;
         icons.enable = true;
-        animate.enable = true;
+        # animate.enable = true;
         notify.enable = true;
       };
 
@@ -338,7 +490,26 @@
       };
 
       utility.preview.glow.enable = true;
-      utility.snacks-nvim.enable = true;
+
+      utility.snacks-nvim = {
+        enable = true;
+        setupOpts = {
+          explorer.enable = true;
+          dashboard.enable = true;
+          bigfile.enable = true;
+          indent.enable = true;
+          notifier = {
+            enable = true;
+            timeout = 3000;
+          };
+          picker.enable = true;
+          words.enable = true;
+          statuscolumn.enable = true;
+          scroll.enable = true;
+          quickfile.enable = true;
+        };
+      };
+
       visuals = {
         indent-blankline.enable = true;
         indent-blankline.setupOpts.scope.enabled = true;

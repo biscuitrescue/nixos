@@ -9,10 +9,11 @@
       splash_offset = 2.0;
 
       preload =
-        [ "/home/cafo/git/wallpapers/ign_colorful.png" ];
+        [ "/home/cafo/git/wallpapers/doggocat.png" ];
+
 
       wallpaper = [
-        "eDP-1, /home/cafo/git/wallpapers/ign_colorful.png"
+        "eDP-1, /home/cafo/git/wallpapers/doggocat.png"
       ]; 
     };
   };
