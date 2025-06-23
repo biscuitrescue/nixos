@@ -198,7 +198,7 @@
   };
   catppuccin = {
     enable = true;
-    mako.enable = false;
+    mako.enable = true;
     hyprlock.enable = false;
     flavor = "mocha";
   };
