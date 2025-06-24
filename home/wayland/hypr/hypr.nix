@@ -8,10 +8,10 @@
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.enable = true;
-    plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-      # ...
-    ];
+   # plugins = [
+    #   inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+    #   # ...
+    # ];
 
     extraConfig = ''
 
@@ -123,7 +123,7 @@ animations {
       bind = [
         "$mod, RETURN, exec, kitty"
         "$mod, D, exec, rofi -show drun"
-        "$mod SHIFT,Q,exec,killall .Hyprland-wrapp"
+        "$mod SHIFT,Q,exec, hyprctl dispatch exit"
         "$mod, Q, killactive"
 
         "$mod, minus, exec, wayblur"

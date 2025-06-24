@@ -11,6 +11,7 @@
 
   home.packages = with pkgs; [
     busybox
+    dissent
     ardour
     btop
     zed-editor
