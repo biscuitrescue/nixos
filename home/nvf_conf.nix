@@ -160,161 +160,161 @@
         }
         {
           key = "<leader>n";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Notification history";
           silent = true;
           action = ":lua Snacks.picker.notifications()<CR>";
         }
         {
           key = "<leader>/";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Snacks grep";
           silent = true;
           action = ":lua Snacks.picker.grep()<CR>";
         }
         {
           key = "<leader>sd";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Diagnostics";
           silent = true;
           action = ":lua Snacks.picker.diagnostics()<CR>";
         }
         {
           key = "<leader>fb";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Snacks Buffer";
           silent = true;
           action = ":lua Snacks.picker.buffers()<CR>";
         }
         {
           key = "<leader>f.";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Recents";
           silent = true;
           action = ":lua Snacks.picker.recent({filter = {cwd = true}})<CR>";
         }
         {
           key = "<leader>fg";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Git files";
           silent = true;
           action = ":lua Snacks.picker.git_files()<CR>";
         }
         {
           key = "<leader>sb";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Buffer Lines";
           silent = true;
           action = ":lua Snacks.picker.lines()<CR>";
         }
         {
           key = "<leader>bd";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Delete Buffer";
           silent = true;
           action = ":lua Snacks.bufdelete()<CR>";
         }
         {
           key = "<leader>b.";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Toggle Scratch Buffer";
           silent = true;
           action = ":lua Snacks.scratch()<CR>";
         }
         {
           key = "<leader>S";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Select Scratch Buffer";
           silent = true;
           action = ":lua Snacks.scratch.select()<CR>";
         }
         {
           key = "<leader>cR";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Rename File";
           silent = true;
           action = ":lua Snacks.rename.rename_file()<CR>";
         }
         {
           key = "<leader>z";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Toggle Zen mode";
           silent = true;
           action = ":lua Snacks.zen()<CR>";
         }
         {
           key = "<leader>Z";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Toggle Zen Zoom";
           silent = true;
           action = ":lua Snacks.zen.zoom()<CR>";
         }
         {
-          key = "gI";
-          mode = ["n" "x" "i" "v"];
+          key = "gy";
+          mode = ["n" "x"  "v"];
           desc = "Goto T[y]pe Definition";
           silent = true;
           action = ":lua Snacks.picker.lsp_type_definitions()<CR>";
         }
         {
           key = "gI";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Goto Implementations";
           silent = true;
           action = ":lua Snacks.picker.lsp_implementations()<CR>";
         }
         {
           key = "gr";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "References";
           silent = true;
           action = ":lua Snacks.picker.lsp_references()<CR>";
         }
         {
           key = "gD";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Goto declaration";
           silent = true;
           action = ":lua Snacks.picker.lsp_declarations()<CR>";
         }
         {
           key = "gd";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Goto definition";
           silent = true;
           action = ":lua Snacks.picker.lsp_definitions()<CR>";
         }
         {
           key = "<leader>f,";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Files";
           silent = true;
           action = ":lua Snacks.picker.files()<CR>";
         }
         {
           key = "<leader>ff";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Smart Picker";
           silent = true;
           action = ":lua Snacks.picker.smart()<CR>";
         }
         {
           key = "<leader>sr";
-          mode = ["n" "x" "i" "v"];
-          desc = "Resumee";
+          mode = ["n" "x" "v"];
+          desc = "Resume";
           silent = true;
           action = ":lua Snacks.picker.resume()<CR>";
         }
         {
           key = "<leader>su";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Undo Tree";
           silent = true;
           action = ":lua Snacks.picker.undo()<CR>";
         }
         {
           key = "<C-n>";
-          mode = ["n" "x" "i" "v"];
+          mode = ["n" "x" "v"];
           desc = "Toggle Explorer";
           silent = true;
           action = ":lua Snacks.explorer()<CR>";
