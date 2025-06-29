@@ -178,6 +178,7 @@ in
     obsidian
     llvmPackages_20.clang-tools
     nmap
+    libgccjit
     gcc
     wget
     unzip
@@ -195,6 +196,7 @@ in
     pulseaudio
     ntfs3g
     python3Full
+    python313Packages.pip
   ];
 
   programs.virt-manager.enable = true;

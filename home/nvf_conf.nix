@@ -85,7 +85,7 @@
         enable = true;
         name = "catppuccin";
         transparent = true;
-        style = "mocha";
+        style = "latte";
       };
 
       statusline.lualine.enable = true;
@@ -285,14 +285,14 @@
           action = ":lua Snacks.picker.lsp_definitions()<CR>";
         }
         {
-          key = "<leader>f,";
+          key = "<leader>.";
           mode = ["n" "x" "v"];
           desc = "Files";
           silent = true;
           action = ":lua Snacks.picker.files()<CR>";
         }
         {
-          key = "<leader>ff";
+          key = "<leader>,";
           mode = ["n" "x" "v"];
           desc = "Smart Picker";
           silent = true;
