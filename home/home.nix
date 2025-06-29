@@ -204,7 +204,7 @@
     enable = true;
     mako.enable = true;
     hyprlock.enable = false;
-    flavor = "latte";
+    flavor = "mocha";
   };
 
   xdg.configFile = {

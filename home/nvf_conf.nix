@@ -85,7 +85,7 @@
         enable = true;
         name = "catppuccin";
         transparent = true;
-        style = "latte";
+        style = "mocha";
       };
 
       statusline.lualine.enable = true;
