@@ -48,6 +48,7 @@
 
   services = {
 
+    gvfs.enable = true;
     samba.enable = true;
     dbus.enable = true;
 
