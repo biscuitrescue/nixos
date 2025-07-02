@@ -1,71 +1,108 @@
 {
-  description = "A very basic flake";
+  description = "NixOS config with NVF, Hyprland, Catppuccin, and standalone Home Manager support";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+
     nvf = {
-      url = "github:notashelf/nvf/";
+      url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     catppuccin.url = "github:catppuccin/nix";
-    hyprland.url = "github:hyprwm/Hyprland";
+
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    hyprland,
-    zen-browser,
-    nvf,
-    catppuccin,
-    ...
-    } @ inputs: let
-      system = "x86_64-linux";
-      inherit (nixpkgs) lib;
-    in {
-      pkgs = nixpkgs.legacyPackages.system;
+  outputs = { self, nixpkgs, home-manager, nvf, catppuccin, hyprland, ... }@inputs: let
+    # ---- System-wide settings ----
+    system = "x86_64-linux";
+    username = "cafo";
+    dir = "/home/${username}";
+    stateVersion = "25.05";
 
-      nixosConfigurations = {
-        cafo = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./nixos/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.backupFileExtension = "backup";
-              # home-manager.backupFileExtension = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" { env.when = self.sourceInfo.lastModified; } "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
-              home-manager.useUserPackages = true;
-              home-manager.users.cafo = {
-                imports = [
-                  nvf.homeManagerModules.default
-                  catppuccin.homeModules.catppuccin
-                  ./home/home.nix
-                  ./home/nvf_conf.nix
-                  ./home/wayland/hypr/hypr.nix
-                  ./home/wayland/hypr/hyprpaper.nix
-                  ./home/wayland/hypr/hypridle.nix
-                  ./home/wayland/mako.nix
-                ];
-              };
-              home-manager.extraSpecialArgs = {
-                inherit inputs system;
-                pkgs = nixpkgs.legacyPackages.${system};
-              };
-            }
-          ];
-        };
-      };
+    pkgs = nixpkgs.legacyPackages.${system};
+
+    # ---- Shared Home Manager modules ----
+    homeModules = [
+      ./home/modules/core.nix
+      nvf.homeManagerModules.default
+      catppuccin.homeModules.catppuccin
+      ./home/home.nix
+      ./home/nvf_conf.nix
+      ./home/wayland/hypr/hypr.nix
+      ./home/wayland/hypr/hyprpaper.nix
+      ./home/wayland/hypr/hypridle.nix
+      ./home/wayland/mako.nix
+    ];
+
+    # ---- Passed to all HM configs ----
+    extraSpecialArgs = {
+      inherit inputs system pkgs username dir stateVersion;
     };
+
+    # ---- Shortcut for home-manager.lib.homeManagerConfiguration ----
+    mkHomeConfig = modules:
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs modules;
+        extraSpecialArgs = extraSpecialArgs;
+      };
+  in {
+    #############################################
+    ## 💥 NixOS System Configuration (with HM) ##
+    #############################################
+    nixosConfigurations.${username} = nixpkgs.lib.nixosSystem {
+      inherit system;
+
+      modules = [
+        ./nixos/configuration.nix
+
+        home-manager.nixosModules.home-manager
+
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+
+          home-manager.users.${username} = {
+            imports = homeModules;
+
+            # ✅ Required in NixOS module mode
+            home.username = username;
+            home.homeDirectory = dir;
+            home.stateVersion = stateVersion;
+          };
+
+          home-manager.extraSpecialArgs = extraSpecialArgs;
+        }
+      ];
+    };
+
+    #######################################
+    ## 👤 Standalone Home Configs (CLI)  ##
+    #######################################
+    homeConfigurations = {
+      # Full user config (home-manager switch --flake .#cafo)
+      ${username} = mkHomeConfig homeModules;
+
+      # NVF-only config (home-manager switch --flake .#nvf)
+      nvf = mkHomeConfig [
+        ./home/modules/core.nix
+        nvf.homeManagerModules.default
+        ./home/nvf_conf.nix
+      ];
+    };
+  };
 }

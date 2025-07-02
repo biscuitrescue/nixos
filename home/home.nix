@@ -1,80 +1,9 @@
-{
-  config,
-  pkgs,
-  system,
-  inputs,
-  ...
-}: {
-  home.username = "cafo";
-  home.homeDirectory = "/home/cafo";
-  home.stateVersion = "25.05";
+{ config, pkgs, ... }: {
 
-  home.packages = with pkgs; [
-    busybox
-    dissent
-    fzf
-    fd
-    gammastep
-    ardour
-    btop
-    zed-editor
-    pavucontrol
-    hypridle
-    spotify-player
-    evince
-    foliate
-    nwg-look
-    catppuccin-gtk
-    zathura
-    qbittorrent
-    playerctl
-    easyeffects
-    onlyoffice-desktopeditors
-    htop
-    feh
-    cmatrix
-    cava
-    pipes-rs
-    yazi-unwrapped
-    grim
-    wl-clipboard
-    nautilus
-    i3lock-color
-    mpv
-    lazygit
-    swaybg
-    swaylock-effects
-    swayidle
-    dmenu-rs
-    networkmanagerapplet
-    alacritty
-    bat
-    eza
-    git
-    kitty
-    slurp
-    rofi
-    light
-    alsa-utils
-    pamixer
-    dunst
-    mako
-    glew
-    maim
-    feh
-    polkit_gnome
-    xdotool
-    wmctrl
-    waybar
-    neofetch
-    xclip
-    starship
-    tmux
-    xss-lock
-    libnotify
-    ranger
-    inputs.zen-browser.packages."${system}".default
+  imports = [
+    ./modules/core.nix
   ];
+
 
   home.file = {
     ".local/share/fonts" = {
@@ -109,10 +38,6 @@
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/fish";
       recursive = true;
     };
-    # ".config/mako" = {
-    #   source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/mako";
-    #   recursive = true;
-    # };
     ".config/waybar" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/waybar";
       recursive = true;
@@ -131,6 +56,7 @@
   };
 
   services = {
+    # gvfs.enable = true;
     picom = {
       enable = true;
       backend = "glx";
@@ -142,24 +68,6 @@
         };
       };
     };
-  };
-
-  # programs.ranger = {
-  #   enable = true;
-  #   settings = {
-  #     view_mode = "miller";
-  #     preview_images = true;
-  #     preview_images_method = "kitty";
-  #     column_ratios = "1,3,3";
-  #     flushinput = true;
-  #     confirm_on_delete = "never";
-  #     scroll_offset = 8;
-  #     unicode_ellipsis = true;
-  #   };
-  # };
-
-  programs.neovim = {
-    enable = true;
   };
 
   home.sessionVariables = {
@@ -188,18 +96,17 @@
     };
 
     font = {
-      name = "Zed Mono Extended";
+      name = "M Plus 1 Code Regular";
       size = 11;
     };
   };
 
   qt = {
     enable = true;
-
     platformTheme.name = "kvantum";
-
     style.name = "kvantum";
   };
+
   catppuccin = {
     enable = true;
     mako.enable = true;
@@ -222,9 +129,4 @@
       uris = ["qemu:///system"];
     };
   };
-
-  programs.home-manager.enable = true;
-
-
-
 }
