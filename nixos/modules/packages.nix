@@ -1,7 +1,7 @@
 {config, pkgs, lib, ...}: {
   environment.systemPackages = with pkgs; [
-    vivaldi
-    vivaldi-ffmpeg-codecs
+    direnv
+    nix-direnv
     spotify
     vim
     clang
