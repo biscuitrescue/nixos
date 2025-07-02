@@ -129,30 +129,35 @@ in
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
-  # programs.mnw = {
-  #   enable = true;
-  #   plugins = {
-  #     "video" = true;
-  #     "audio" = true;
-  #   };
-  # };
+  programs = {
+    command-not-found = true;
 
-  programs.command-not-found.enable = true;
-  programs.uwsm = {
-    enable = true;
-    waylandCompositors = {
-      hyprland = {
-        prettyName = "Hyprland";
-        comment = "Hyprland compositor managed by UWSM";
-        binPath = "/run/current-system/sw/bin/Hyprland";
+    uwsm = {
+      enable = true;
+      waylandCompositors = {
+        hyprland = {
+          prettyName = "Hyprland";
+          comment = "Hyprland compositor managed by UWSM";
+          binPath = "/run/current-system/sw/bin/Hyprland";
+        };
       };
     };
+
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
+
+    fish.enable = true;
+    firefox.enable = true;
+    nix-ld.enable = true;
+    virt-manager.enable = true;
+
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
   };
-  programs.hyprland.withUWSM = true;
-    programs.fish.enable = true;
-    programs.firefox.enable = true;
-    programs.nix-ld.enable = true;
-  programs.hyprland.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -174,6 +179,7 @@ in
     spotify
     vim
     clang
+    discord
     cmake
     obsidian
     llvmPackages_20.clang-tools
@@ -199,7 +205,6 @@ in
     python313Packages.pip
   ];
 
-  programs.virt-manager.enable = true;
   users.groups.libvirtd.members = ["cafo"];
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
@@ -212,10 +217,6 @@ in
 
   fonts.fontDir.enable = true;
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
 
   services.samba = {
     enable = true;

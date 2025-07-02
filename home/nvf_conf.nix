@@ -12,6 +12,25 @@
         providers.wl-copy.enable = true;
         providers.xclip.enable = true;
       };
+
+      dashboard.startify = {
+        enable = true;
+        bookmarks = [
+          {
+            n = "~/nixos/home/nvf_conf.nix";
+          }
+          {
+            g = "~/git/gatekeep/src/main.rs";
+          }
+          {
+            r = "~/git/rsvcs/src/main.rs";
+          }
+          {
+            d = "~/git/drag/src/main.cpp";
+          }
+        ];
+      };
+
       options = {
         shiftwidth = 2;
         ignorecase = true;
@@ -61,12 +80,35 @@
       };
 
       extraPlugins = {
-        kanagawa= {
-          package = pkgs.vimPlugins.kanagawa-nvim;
-          setup = "require('kanagawa').setup {}";
+        kanagawa = {
+          package = pkgs.vimPlugins.kanagawa-paper-nvim;
+          setup = "require('kanagawa-paper').setup {}";
         };
       };
       luaConfigPost = ''
+local function hackerman_theme()
+  vim.cmd('hi clear')
+  local bg = 0x000000 -- must be number, not string
+  local fg = 0x00ff00
+
+  local groups = vim.fn.getcompletion("", 'highlight')
+
+  for _, group in ipairs(groups) do
+    local ok, attrs = pcall(vim.api.nvim_get_hl, 0, { name = group })
+    if ok then
+      if attrs.fg then attrs.fg = fg end
+      if attrs.bg then attrs.bg = bg end
+      vim.api.nvim_set_hl(0, group, attrs)
+    end
+  end
+
+  vim.api.nvim_set_hl(0, 'Visual', { bg = '#222222' })
+  vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#002200' })
+end
+
+-- Define a command that calls the function
+vim.api.nvim_create_user_command("Hackerman", hackerman_theme, {})
+
   -- Global replace word under cursor
   vim.api.nvim_create_user_command("ReplaceWordUnderCursor", function()
     local word = vim.fn.expand("<cword>")
@@ -74,15 +116,15 @@
     vim.cmd("call feedkeys(':%s/\\<" .. word .. "\\>/', 'n')")
   end, {})
 
-  require("kanagawa").setup({
+  require("kanagawa-paper").setup({
     style = "dragon",
     transparent = true,
   })
-  -- vim.cmd("colorscheme kanagawa-dragon")
+  vim.cmd("colorscheme kanagawa-paper-ink")
 '';
 
       theme = {
-        enable = true;
+        enable = false;
         name = "catppuccin";
         transparent = true;
         style = "mocha";
@@ -495,7 +537,6 @@
         enable = true;
         setupOpts = {
           explorer.enable = true;
-          dashboard.enable = true;
           bigfile.enable = true;
           indent.enable = true;
           notifier = {
