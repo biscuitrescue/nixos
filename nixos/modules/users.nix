@@ -4,7 +4,6 @@
     description = "Karttikeya Sinha";
     extraGroups = [ "wheel" "audio" "input" "video" "networkmanager" "lp" "scanner" "kvm" "libvirtd" "vboxusers" ];
     shell = pkgs.fish;
-    groups.libvirtd.members = ["cafo"];
   };
 
 }

@@ -42,10 +42,11 @@
       catppuccin.homeModules.catppuccin
       ./home/home.nix
       ./home/nvf_conf.nix
-      ./home/wayland/hypr/hypr.nix
-      ./home/wayland/hypr/hyprpaper.nix
-      ./home/wayland/hypr/hypridle.nix
-      ./home/wayland/mako.nix
+      ./home/modules/packages.nix
+      ./home/modules/hypr.nix
+      ./home/modules/hyprpaper.nix
+      ./home/modules/hypridle.nix
+      ./home/modules/mako.nix
     ];
 
     # ---- Passed to all HM configs ----
@@ -102,6 +103,13 @@
         ./home/modules/core.nix
         nvf.homeManagerModules.default
         ./home/nvf_conf.nix
+      ];
+    };
+    devShells.${system}.default = pkgs.mkShell {
+      buildInputs = [
+        inputs.home-manager.packages.${system}.home-manager
+        pkgs.jq
+        pkgs.nixpkgs-fmt
       ];
     };
   };

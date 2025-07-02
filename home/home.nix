@@ -1,10 +1,5 @@
 { config, pkgs, ... }: {
 
-  imports = [
-    ./modules/core.nix
-  ];
-
-
   home.file = {
     ".local/share/fonts" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/fonts";

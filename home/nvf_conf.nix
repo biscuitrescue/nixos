@@ -1,9 +1,5 @@
 { config, pkgs, ... }: {
 
-  imports = [
-    ./modules/core.nix
-  ];
-
   programs.nvf = {
     enable = true;
     settings.vim = {
