@@ -108,9 +108,9 @@ in
       windowManager = {
         qtile = {
           enable = true;
-          extraPackages = python3Packages: with python3Packages; [
-            qtile-extras
-          ];
+          # extraPackages = python3Packages: with python3Packages; [
+          #   qtile-extras
+          # ];
         };
       };
     };
@@ -130,7 +130,7 @@ in
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   programs = {
-    command-not-found = true;
+    command-not-found.enable = true;
 
     uwsm = {
       enable = true;
