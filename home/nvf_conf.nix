@@ -6,6 +6,11 @@
   programs.nvf = {
     enable = true;
     settings.vim = {
+      assistant.copilot = {
+        enable = true;
+        cmp.enable = true;
+      };
+
       clipboard = {
         enable = true;
         registers = "unnamedplus";
