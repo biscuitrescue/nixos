@@ -119,7 +119,7 @@ vim.api.nvim_create_user_command("Hackerman", hackerman_theme, {})
   end, {})
 
   require("kanagawa-paper").setup({
-    style = "dragon",
+    style = "ink",
     transparent = true,
   })
   vim.cmd("colorscheme kanagawa-paper-ink")
@@ -127,9 +127,9 @@ vim.api.nvim_create_user_command("Hackerman", hackerman_theme, {})
 
       theme = {
         enable = false;
-        name = "catppuccin";
+        name = "gruvbox";
         transparent = true;
-        style = "mocha";
+        style = "dark";
       };
 
       statusline.lualine.enable = true;
@@ -530,7 +530,7 @@ vim.api.nvim_create_user_command("Hackerman", hackerman_theme, {})
 
       ui = {
         colorizer.enable = true;
-        noice.enable = true;
+        noice.enable = false;
       };
 
       utility.preview.glow.enable = true;

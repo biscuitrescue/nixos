@@ -1,8 +1,9 @@
-{ pkgs, inputs, system, ... }: {
+{ pkgs, inputs, system, username, ... }: {
 
   home.packages = with pkgs; [
-    busybox
+    neovim
     fzf
+    vlc
     fd
     btop
     pavucontrol
@@ -58,7 +59,6 @@
     inputs.zen-browser.packages."${system}".default
   ];
   programs = {
-    neovim.enable = true;
     home-manager.enable = true;
   };
 }

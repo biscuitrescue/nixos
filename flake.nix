@@ -16,17 +16,17 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nvf = {
+    #   url = "github:notashelf/nvf";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     catppuccin.url = "github:catppuccin/nix";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, nvf, catppuccin, hyprland, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, catppuccin, hyprland, ... }@inputs: let
     # ---- System-wide settings ----
     system = "x86_64-linux";
     username = "cafo";
@@ -37,11 +37,11 @@
 
     # ---- Shared Home Manager modules ----
     homeModules = [
-      ./home/modules/core.nix
-      nvf.homeManagerModules.default
+      # nvf.homeManagerModules.default
       catppuccin.homeModules.catppuccin
+      ./home/modules/core.nix
       ./home/home.nix
-      ./home/nvf_conf.nix
+      # ./home/nvf_conf.nix
       ./home/modules/packages.nix
       ./home/modules/hypr.nix
       ./home/modules/hyprpaper.nix
@@ -61,9 +61,7 @@
         extraSpecialArgs = extraSpecialArgs;
       };
   in {
-    #############################################
-    ## 💥 NixOS System Configuration (with HM) ##
-    #############################################
+    ### 💥 NixOS System Configuration (with HM)
     nixosConfigurations.${username} = nixpkgs.lib.nixosSystem {
       inherit system;
 
@@ -91,19 +89,16 @@
       ];
     };
 
-    #######################################
-    ## 👤 Standalone Home Configs (CLI)  ##
-    #######################################
+    ### Standalone Home Configs (CLI)
     homeConfigurations = {
-      # Full user config (home-manager switch --flake .#cafo)
       ${username} = mkHomeConfig homeModules;
 
       # NVF-only config (home-manager switch --flake .#nvf)
-      nvf = mkHomeConfig [
-        ./home/modules/core.nix
-        nvf.homeManagerModules.default
-        ./home/nvf_conf.nix
-      ];
+      # nvf = mkHomeConfig [
+      #   ./home/modules/core.nix
+      #   nvf.homeManagerModules.default
+      #   ./home/nvf_conf.nix
+      # ];
     };
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = [
