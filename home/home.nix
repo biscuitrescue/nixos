@@ -1,6 +1,10 @@
 { config, pkgs, ... }: {
 
   home.file = {
+    ".config/nvim/" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/nvim";
+      recursive = true;
+    };
     ".local/share/fonts" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/fonts";
       recursive = true;

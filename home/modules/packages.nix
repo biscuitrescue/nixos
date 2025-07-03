@@ -1,7 +1,6 @@
 { pkgs, inputs, system, username, ... }: {
 
   home.packages = with pkgs; [
-    neovim
     fzf
     vlc
     fd
@@ -56,6 +55,11 @@
     xss-lock
     libnotify
     ranger
+    pyright
+    rust-analyzer
+    lua-language-server
+    zls
+    neovim
     inputs.zen-browser.packages."${system}".default
   ];
   programs = {
