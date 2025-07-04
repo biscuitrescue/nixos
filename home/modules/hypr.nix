@@ -42,9 +42,9 @@ animations {
         "swayidle -w timeout 900 'wayblur' before-sleep 'wayblur'"
       ];
       decoration = {
-        rounding = "6";
+        rounding = "0";
         blur = {
-          enabled = true;
+          enabled = false;
           size = 4;
           passes = 2;
         };

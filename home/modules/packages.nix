@@ -62,6 +62,7 @@
     neovim
     zig
     luajit
+    nil
     inputs.zen-browser.packages."${system}".default
   ];
   programs = {
