@@ -136,8 +136,8 @@ animations {
 
         "$mod,B,exec,killall -SIGUSR1 .waybar-wrapped"
 
-        "bind=$mod,L,resizeactive,40 0"
-        "$mod,H,resizeactive,-40 0"
+        "bind=$mod CTRL,L,resizeactive,40 0"
+        "$mod CTRL,H,resizeactive,-40 0"
 
         "$mod SHIFT,LEFT,movewindow,l"
         "$mod SHIFT,RIGHT,movewindow,r"
@@ -149,13 +149,13 @@ animations {
         "$mod SHIFT,J,movewindow,d"
 
         "$mod,LEFT,movefocus,l"
-        "$mod,j,movefocus,l"
-        "$mod,k,movefocus,r"
+        "$mod,H,movefocus,l"
+        "$mod,L,movefocus,r"
+        "$mod,J,movefocus,d"
+        "$mod,K,movefocus,u"
         "$mod,RIGHT,movefocus,r"
         "$mod,UP,movefocus,u"
         "$mod,DOWN,movefocus,d"
-        "$mod,K,movefocus,u"
-        "$mod,J,movefocus,d"
         "$mod,F,togglefloating"
         "alt,space,movetoworkspace,special:base"
         "alt,P,movetoworkspace,special:term"
