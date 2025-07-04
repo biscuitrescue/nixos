@@ -60,6 +60,8 @@
     lua-language-server
     zls
     neovim
+    zig
+    luajit
     inputs.zen-browser.packages."${system}".default
   ];
   programs = {

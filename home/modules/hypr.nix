@@ -27,7 +27,7 @@ animations {
     animation=fade,1,10,default
     animation=workspaces,1,6,default,slide
     animation=specialWorkspace,1,4,overshot,slidevert
-    enabled=1
+    enabled=0
 }
     '';
 
@@ -76,7 +76,7 @@ animations {
         workspace_swipe_forever = true;
       };
 
-      monitor = "eDP-1, 1920x1080@59.99900, auto, 1";
+      monitor = "eDP-1, 1920x1080@59.99900, auto, 1.25";
 
       general = {
         gaps_in = 2;
