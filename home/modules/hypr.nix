@@ -79,9 +79,9 @@ animations {
       monitor = "eDP-1, 1920x1080@59.99900, auto, 1.25";
 
       general = {
-        gaps_in = 2;
-        gaps_out = 6;
-        border_size = 2;
+        gaps_in = 0;
+        gaps_out = 0;
+        border_size = 1;
         "col.active_border" = "0xff95aec7";
         "col.inactive_border" = "0xff45475a";
         layout = "master";
@@ -89,27 +89,9 @@ animations {
       };
 
       master = {
-        special_scale_factor = 0.925;
+        special_scale_factor = 0.935;
         new_status = "master";
         new_on_top = true;
-      };
-
-      plugins = {
-        hyprbars = {
-          bar_color = "0x991e1e2e";
-          bar_blur = 1;
-          bar_height = 45;
-          bar_text_size = 11;
-          bar_text_font = "M Plus 1 Code Regular";
-          bar_title_enabled = true;
-          bar_buttons_alignment = "left";
-          bar_padding = 8;
-          hyprbars-button = [
-            "rgb(F38baf), 16, , hyprctl dispatch killactive"
-            "rgb(F9e2af), 16, , hyprctl dispatch movetoworkspacesilent special:MinimisedApps"
-            "rgb(a6ebaf), 16, , hyprctl dispatch fullscreen 1"
-          ];
-        };
       };
 
       "$mod" = "SUPER";
