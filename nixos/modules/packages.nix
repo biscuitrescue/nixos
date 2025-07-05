@@ -1,4 +1,4 @@
-{config, pkgs, lib, ...}: {
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     direnv
     nix-direnv
@@ -61,4 +61,10 @@
       enableSSHSupport = true;
     };
   };
-}
+  services.xserver.windowManager.qtile = {
+    enable = true;
+    extraPackages = python3Packages: with python3Packages; [
+      qtile-extras
+    ];
+  };
+ } 
