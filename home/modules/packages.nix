@@ -55,6 +55,13 @@
     xss-lock
     libnotify
     ranger
+    chafa
+    ueberzugpp
+    hpx
+    tree-sitter
+    nodejs-slim
+    go
+    gopls
     pyright
     rust-analyzer
     lua-language-server
