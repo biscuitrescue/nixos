@@ -9,11 +9,11 @@
       splash_offset = 2.0;
 
       preload =
-        [ "/home/cafo/git/wallpapers/flowers.png" ];
+        [ "/home/cafo/git/wallpapers/astro.png" ];
 
 
       wallpaper = [
-        "eDP-1, /home/cafo/git/wallpapers/flowers.png"
+        "eDP-1, /home/cafo/git/wallpapers/astro.png"
       ]; 
     };
   };

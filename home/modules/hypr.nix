@@ -105,6 +105,7 @@ animations {
       bind = [
         "$mod, RETURN, exec, kitty"
         "$mod, D, exec, rofi -show drun"
+        "$mod, R, exec, rofi -show run"
         "$mod SHIFT,Q,exec, hyprctl dispatch exit"
         "$mod, Q, killactive"
 
@@ -136,17 +137,19 @@ animations {
 
         "$mod,B,exec,killall -SIGUSR1 .waybar-wrapped"
 
-        "bind=$mod CTRL,L,resizeactive,40 0"
-        "$mod CTRL,H,resizeactive,-40 0"
+        "$mod SHIFT,K,resizeactive,0 -40"
+        "$mod SHIFT,J,resizeactive,0 40"
+        "$mod SHIFT,L,resizeactive,40 0"
+        "$mod SHIFT,H,resizeactive,-40 0"
 
         "$mod SHIFT,LEFT,movewindow,l"
         "$mod SHIFT,RIGHT,movewindow,r"
         "$mod SHIFT,UP,movewindow,u"
         "$mod SHIFT,DOWN,movewindow,d"
-        "$mod SHIFT,H,movewindow,l"
-        "$mod SHIFT,L,movewindow,r"
-        "$mod SHIFT,K,movewindow,u"
-        "$mod SHIFT,J,movewindow,d"
+        "$mod CTRL,H,movewindow,l"
+        "$mod CTRL,L,movewindow,r"
+        "$mod CTRL,K,movewindow,u"
+        "$mod CTRL,J,movewindow,d"
 
         "$mod,LEFT,movefocus,l"
         "$mod,H,movefocus,l"
