@@ -1,5 +1,5 @@
 {
-  description = "NixOS config with NVF, Hyprland, Catppuccin, and standalone Home Manager support";
+  description = "NixOS system flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -15,11 +15,6 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-
-    # nvf = {
-    #   url = "github:notashelf/nvf";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     catppuccin.url = "github:catppuccin/nix";
 
@@ -37,15 +32,13 @@
 
     # ---- Shared Home Manager modules ----
     homeModules = [
-      # nvf.homeManagerModules.default
       catppuccin.homeModules.catppuccin
       ./home/modules/core.nix
       ./home/home.nix
-      # ./home/nvf_conf.nix
       ./home/modules/packages.nix
-      ./home/modules/hypr.nix
-      ./home/modules/hyprpaper.nix
-      ./home/modules/hypridle.nix
+      ./home/modules/hypr/hypr.nix
+      ./home/modules/hypr/hyprpaper.nix
+      ./home/modules/hypr/hypridle.nix
       ./home/modules/mako.nix
     ];
 
@@ -61,7 +54,7 @@
         extraSpecialArgs = extraSpecialArgs;
       };
   in {
-    ### 💥 NixOS System Configuration (with HM)
+
     nixosConfigurations.${username} = nixpkgs.lib.nixosSystem {
       inherit system;
 
@@ -77,8 +70,6 @@
 
           home-manager.users.${username} = {
             imports = homeModules;
-
-            # ✅ Required in NixOS module mode
             home.username = username;
             home.homeDirectory = dir;
             home.stateVersion = stateVersion;
@@ -92,13 +83,6 @@
     ### Standalone Home Configs (CLI)
     homeConfigurations = {
       ${username} = mkHomeConfig homeModules;
-
-      # NVF-only config (home-manager switch --flake .#nvf)
-      # nvf = mkHomeConfig [
-      #   ./home/modules/core.nix
-      #   nvf.homeManagerModules.default
-      #   ./home/nvf_conf.nix
-      # ];
     };
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = [

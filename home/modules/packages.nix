@@ -60,6 +60,7 @@
     hpx
     tree-sitter
     nodejs-slim
+    deno
     go
     gopls
     pyright

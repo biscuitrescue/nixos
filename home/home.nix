@@ -1,6 +1,10 @@
 { config, pkgs, ... }: {
 
   home.file = {
+    "scripts/" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/scripts";
+      recursive = true;
+    };
     ".config/nvim/" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/nvim";
       recursive = true;
