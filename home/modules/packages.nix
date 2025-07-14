@@ -71,9 +71,14 @@
     zig
     luajit
     nil
+    any-nix-shell
+    libtool
+    sqlite
+    ispell
     inputs.zen-browser.packages."${system}".default
   ];
   programs = {
     home-manager.enable = true;
+    emacs.enable = true;
   };
 }
