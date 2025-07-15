@@ -9,11 +9,11 @@
       splash_offset = 2.0;
 
       preload =
-        [ "/home/cafo/git/wallpapers/dalek_mocha_lossless.png" ];
+        [ "/home/cafo/git/wallpapers/flowers.png" ];
 
 
       wallpaper = [
-        "eDP-1, /home/cafo/git/wallpapers/dalek_mocha_lossless.png"
+"eDP-1, /home/cafo/git/wallpapers/flowers.png"
       ]; 
     };
   };
