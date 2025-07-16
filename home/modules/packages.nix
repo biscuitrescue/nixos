@@ -57,21 +57,25 @@
     ranger
     chafa
     ueberzugpp
+    any-nix-shell
     hpx
+    # Langs
+    go
+    luajit
+    zig
+    # lsp + highlight
     tree-sitter
     nodejs-slim
-    deno
-    go
     gopls
+    nil
     pyright
     rust-analyzer
     lua-language-server
     zls
+    # neovim
     neovim
-    zig
-    luajit
-    nil
-    any-nix-shell
+    deno
+    # emacs
     libtool
     sqlite
     ispell
