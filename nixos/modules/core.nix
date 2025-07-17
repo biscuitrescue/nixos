@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ lib, pkgs, ... }: {
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -99,7 +99,12 @@
     };
 
     gnome.gnome-keyring.enable = true;
-    openssh.enable = false;
+    # openssh.enable = true;
+    openssh = {
+      enable = true;
+      settings.PasswordAuthentication = false;
+    };
+    tailscale.enable = true;
     printing.enable = false;
     pulseaudio.enable = false;
     pipewire = {
@@ -133,6 +138,8 @@
       pkgs.xdg-desktop-portal-gtk
     ];
   };
+
+  systemd.services.sshd.wantedBy = lib.mkForce [ ];
 
   security = {
     polkit.enable = true;

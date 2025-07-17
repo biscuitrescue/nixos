@@ -6,7 +6,9 @@
   wayland.windowManager.hyprland = {
     systemd.variables = ["--all"];
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+
+    package = inputs.hyprland.packages.${pkgs.system}.default;
     xwayland.enable = true;
    # plugins = [
     #   inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars

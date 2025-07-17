@@ -59,6 +59,7 @@
     ueberzugpp
     any-nix-shell
     hpx
+    ghostty
     # Langs
     go
     luajit
@@ -75,6 +76,10 @@
     # neovim
     neovim
     deno
+    ripgrep
+    stylua
+    eslint
+    black
     # emacs
     libtool
     sqlite

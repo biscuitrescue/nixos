@@ -1,7 +1,14 @@
 { pkgs, ... }: {
+
+  nixpkgs.overlays = [
+    (final: prev: {
+     jdk8 = final.openjdk8-bootstrap;
+     })
+  ];
   environment.systemPackages = with pkgs; [
     direnv
     nix-direnv
+    tailscale
     spotify
     vim
     clang
