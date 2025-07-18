@@ -47,6 +47,7 @@
   };
 
   services = {
+    # logind.lidSwitch = "ignore";
 
     gvfs.enable = true;
     samba.enable = true;
@@ -99,7 +100,6 @@
     };
 
     gnome.gnome-keyring.enable = true;
-    # openssh.enable = true;
     openssh = {
       enable = true;
       settings.PasswordAuthentication = false;
@@ -140,6 +140,12 @@
   };
 
   systemd.services.sshd.wantedBy = lib.mkForce [ ];
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=yes
+    AllowHibernation=no
+    AllowHybridSleep=yes
+    AllowSuspendThenHibernate=no
+  '';
 
   security = {
     polkit.enable = true;
