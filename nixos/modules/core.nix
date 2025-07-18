@@ -81,6 +81,7 @@
         tapping = true;
       };
     };
+    displayManager.gdm.enable = true;
     xserver = {
       enable = true;
       displayManager = {
