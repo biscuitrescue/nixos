@@ -132,7 +132,7 @@ animations {
         "$mod SHIFT,M,exec,kill_decor"
         "$mod SHIFT,B,exec,kill_border"
 
-        "$mod SHIFT,SPACE,exec,nautilus"
+        "$mod CTRL,SPACE,exec,nautilus"
         ",PRINT,exec,grimshot"
         "SHIFT,PRINT,exec,grimclip"
         "$mod,PRINT,exec,grimcrop"
