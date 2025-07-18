@@ -46,8 +46,8 @@ animations {
       decoration = {
         rounding = "0";
         blur = {
-          enabled = false;
-          size = 4;
+          enabled = true;
+          size = 5;
           passes = 2;
         };
       };

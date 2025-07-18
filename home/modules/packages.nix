@@ -1,6 +1,7 @@
 { pkgs, inputs, system, username, ... }: {
 
   home.packages = with pkgs; [
+    fastfetch
     fzf
     vlc
     fd
