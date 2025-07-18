@@ -81,7 +81,6 @@
         tapping = true;
       };
     };
-    displayManager.gdm.enable = true;
     xserver = {
       enable = true;
       displayManager = {
@@ -101,6 +100,7 @@
     };
 
     gnome.gnome-keyring.enable = true;
+    # openssh.enable = true;
     openssh = {
       enable = true;
       settings.PasswordAuthentication = false;
