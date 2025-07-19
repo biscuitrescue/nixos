@@ -87,17 +87,6 @@
 
   gtk = {
     enable = true;
-
-    theme = {
-      package = pkgs.colloid-gtk-theme;
-      name = "Colloid-Dark";
-    };
-
-    iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus-Dark";
-    };
-
     font = {
       name = "M Plus 1 Code Regular";
       size = 11;
@@ -114,7 +103,6 @@
     enable = true;
     mako.enable = true;
     hyprlock.enable = false;
-    flavor = "mocha";
   };
 
   xdg.configFile = {

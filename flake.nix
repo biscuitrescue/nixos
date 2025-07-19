@@ -35,6 +35,7 @@
       catppuccin.homeModules.catppuccin
       ./home/modules/core.nix
       ./home/home.nix
+      ./home/modules/dark.nix
       ./home/modules/packages.nix
       ./home/modules/hypr/hypr.nix
       ./home/modules/hypr/hyprpaper.nix
