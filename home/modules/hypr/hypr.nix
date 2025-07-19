@@ -20,7 +20,7 @@
 layerrule = blur, waybar
 
 windowrule=float,class:org.gnome.Nautilus
-windowrule=size 1319 821,class:org.gnome.Nautilus
+windowrule=size 1119 621,class:org.gnome.Nautilus
 
 animations {
     bezier=overshot,0.13,0.99,0.29,1.1
