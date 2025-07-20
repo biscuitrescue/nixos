@@ -6,15 +6,9 @@
   wayland.windowManager.hyprland = {
     systemd.variables = ["--all"];
     enable = true;
-    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-
-    package = inputs.hyprland.packages.${pkgs.system}.default;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
-   # plugins = [
-    #   inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-    #   # ...
-    # ];
-
     extraConfig = ''
 
 layerrule = blur, waybar

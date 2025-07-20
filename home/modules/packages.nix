@@ -1,6 +1,9 @@
 { pkgs, inputs, system, username, ... }: {
 
   home.packages = with pkgs; [
+    sunshine
+    rustdesk-server
+    hyprsunset
     fastfetch
     fzf
     vlc
