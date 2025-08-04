@@ -11,7 +11,7 @@
       name = "Papirus-Light";
     };
   };
-  catppuccin = {
-    flavor = "latte";
-  };
+  # catppuccin = {
+  #   flavor = "latte";
+  # };
 }

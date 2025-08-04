@@ -11,7 +11,7 @@
     xwayland.enable = true;
     extraConfig = ''
 
-layerrule = blur, waybar
+#layerrule = blur, waybar
 
 windowrule=float,class:org.gnome.Nautilus
 windowrule=size 1119 621,class:org.gnome.Nautilus

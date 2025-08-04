@@ -11,7 +11,7 @@
       name = "Papirus-Dark";
     };
   };
-  catppuccin = {
-    flavor = "mocha";
-  };
+  # catppuccin = {
+  #   flavor = "mocha";
+  # };
 }

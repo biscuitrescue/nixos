@@ -16,12 +16,12 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    catppuccin.url = "github:catppuccin/nix";
+    # catppuccin.url = "github:catppuccin/nix";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, catppuccin, hyprland, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs: let
     # ---- System-wide settings ----
     system = "x86_64-linux";
     username = "cafo";
@@ -32,10 +32,10 @@
 
     # ---- Shared Home Manager modules ----
     homeModules = [
-      catppuccin.homeModules.catppuccin
+      # catppuccin.homeModules.catppuccin
       ./home/modules/core.nix
       ./home/home.nix
-      ./home/modules/light.nix
+      ./home/modules/dark.nix
       ./home/modules/packages.nix
       ./home/modules/hypr/hypr.nix
       ./home/modules/hypr/hyprpaper.nix

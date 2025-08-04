@@ -99,11 +99,11 @@
     style.name = "kvantum";
   };
 
-  catppuccin = {
-    enable = true;
-    mako.enable = true;
-    hyprlock.enable = false;
-  };
+  # catppuccin = {
+  #   enable = false;
+  #   mako.enable = true;
+  #   hyprlock.enable = false;
+  # };
 
   xdg.configFile = {
     "Kvantum/kvantum.kvconfig".text = ''
