@@ -9,11 +9,11 @@
       splash_offset = 2.0;
 
       preload =
-        [ "/home/cafo/git/wallpapers/blueprint_gruv.png" ];
+        [ "/home/cafo/git/wallpapers/yohoho.jpg" ];
 
 
       wallpaper = [
-        "eDP-1, /home/cafo/git/wallpapers/blueprint_gruv.png"
+        "eDP-1, /home/cafo/git/wallpapers/yohoho.jpg"
       ]; 
     };
   };
