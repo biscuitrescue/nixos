@@ -9,11 +9,11 @@
       splash_offset = 2.0;
 
       preload =
-        [ "/home/cafo/git/wallpapers/whale.jpg" ];
+        [ "/home/cafo/git/wallpapers/mando.jpg" ];
 
 
       wallpaper = [
-        "eDP-1, /home/cafo/git/wallpapers/whale.jpg"
+        "eDP-1, /home/cafo/git/wallpapers/mando.jpg"
       ]; 
     };
   };
