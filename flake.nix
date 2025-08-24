@@ -11,13 +11,6 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    # catppuccin.url = "github:catppuccin/nix";
-
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
