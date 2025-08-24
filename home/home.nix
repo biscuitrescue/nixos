@@ -59,18 +59,7 @@
   };
 
   services = {
-    # gvfs.enable = true;
-    picom = {
-      enable = true;
-      backend = "glx";
-      settings = {
-        blur = {
-          method = "gaussian";
-          size = 15;
-          deviation = 5.0;
-        };
-      };
-    };
+    gvfs.enable = true;
   };
 
   home.sessionVariables = {
@@ -79,7 +68,6 @@
 
   home.pointerCursor = {
     gtk.enable = true;
-    # x11.enable = true;
     package = pkgs.oreo-cursors-plus;
     name = "oreo_purple_cursors";
     size = 16;
@@ -98,12 +86,6 @@
     platformTheme.name = "kvantum";
     style.name = "kvantum";
   };
-
-  # catppuccin = {
-  #   enable = false;
-  #   mako.enable = true;
-  #   hyprlock.enable = false;
-  # };
 
   xdg.configFile = {
     "Kvantum/kvantum.kvconfig".text = ''

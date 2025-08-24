@@ -99,7 +99,7 @@ animations {
       ];
 
       bind = [
-        "$mod, RETURN, exec, alacritty"
+        "$mod, RETURN, exec, kitty"
         "$mod, D, exec, rofi -show drun"
         "$mod, R, exec, rofi -show run"
         "$mod SHIFT,Q,exec, hyprctl dispatch exit"
