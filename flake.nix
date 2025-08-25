@@ -11,6 +11,7 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
+
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
