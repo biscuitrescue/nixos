@@ -15,7 +15,6 @@
   };
 
   outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs: let
-    # ---- System-wide settings ----
     system = "x86_64-linux";
     username = "cafo";
     dir = "/home/${username}";
@@ -23,9 +22,7 @@
 
     pkgs = nixpkgs.legacyPackages.${system};
 
-    # ---- Shared Home Manager modules ----
     homeModules = [
-      # catppuccin.homeModules.catppuccin
       ./home/modules/core.nix
       ./home/home.nix
       ./home/modules/dark.nix
@@ -36,12 +33,10 @@
       ./home/modules/mako.nix
     ];
 
-    # ---- Passed to all HM configs ----
     extraSpecialArgs = {
       inherit inputs system pkgs username dir stateVersion;
     };
 
-    # ---- Shortcut for home-manager.lib.homeManagerConfiguration ----
     mkHomeConfig = modules:
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs modules;
@@ -74,7 +69,6 @@
       ];
     };
 
-    ### Standalone Home Configs (CLI)
     homeConfigurations = {
       ${username} = mkHomeConfig homeModules;
     };
