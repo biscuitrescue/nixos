@@ -58,9 +58,6 @@
     };
   };
 
-  services = {
-    gvfs.enable = true;
-  };
 
   home.sessionVariables = {
     EDITOR = "nvim";

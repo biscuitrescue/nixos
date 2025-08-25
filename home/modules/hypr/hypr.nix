@@ -75,8 +75,8 @@ animations {
       monitor = "eDP-1, 1920x1080@59.99900, auto, 1.25";
 
       general = {
-        gaps_in = 0;
-        gaps_out = 0;
+        gaps_in = 3;
+        gaps_out = 5;
         border_size = 1;
         "col.active_border" = "0xff95aec7";
         "col.inactive_border" = "0xff45475a";

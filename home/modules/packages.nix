@@ -73,7 +73,7 @@
     nodejs-slim
     gopls
     nil
-    pyright
+    python313Packages.python-lsp-server
     rust-analyzer
     lua-language-server
     zls
