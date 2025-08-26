@@ -84,14 +84,14 @@
     style.name = "kvantum";
   };
 
-  xdg.configFile = {
-    "Kvantum/kvantum.kvconfig".text = ''
-      [General]
-      theme=GraphiteNordDark
-    '';
-
-    "Kvantum/GraphiteNord".source = "${pkgs.graphite-kde-theme}/share/Kvantum/GraphiteNord";
-  };
+  # xdg.configFile = {
+  #   "Kvantum/kvantum.kvconfig".text = ''
+  #     [General]
+  #     theme=rose-pine-kvantum
+  #   '';
+  #
+  #   # "Kvantum/Harmony".source = "${pkgs.}/share/Kvantum/Harmony";
+  # };
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
