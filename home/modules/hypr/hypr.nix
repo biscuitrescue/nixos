@@ -6,7 +6,7 @@
   wayland.windowManager.hyprland = {
     systemd.variables = ["--all"];
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
     extraConfig = ''
@@ -23,7 +23,7 @@ animations {
     animation=fade,1,10,default
     animation=workspaces,1,6,default,slide
     animation=specialWorkspace,1,4,overshot,slidevert
-    enabled=0
+    enabled=1
 }
     '';
 
@@ -38,7 +38,7 @@ animations {
         "swayidle -w timeout 900 'wayblur' before-sleep 'wayblur'"
       ];
       decoration = {
-        rounding = "0";
+        rounding = "4";
         blur = {
           enabled = true;
           size = 5;
@@ -67,7 +67,6 @@ animations {
       };
 
       gestures = {
-        workspace_swipe = true;
         workspace_swipe_distance = 200;
         workspace_swipe_forever = true;
       };
