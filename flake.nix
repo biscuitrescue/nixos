@@ -11,74 +11,90 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+   zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs: let
-    system = "x86_64-linux";
-    username = "cafo";
-    dir = "/home/${username}";
-    stateVersion = "25.05";
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      hyprland,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+      username = "cafo";
+      dir = "/home/${username}";
+      stateVersion = "25.05";
 
-    pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = nixpkgs.legacyPackages.${system};
 
-    homeModules = [
-      ./home/modules/core.nix
-      ./home/home.nix
-      ./home/modules/dark.nix
-      ./home/modules/packages.nix
-      ./home/modules/hypr/hypr.nix
-      ./home/modules/hypr/hyprpaper.nix
-      ./home/modules/hypr/hypridle.nix
-      ./home/modules/mako.nix
-    ];
+      homeModules = [
+        ./home/modules/core.nix
+        ./home/home.nix
+        ./home/modules/dark.nix
+        ./home/modules/packages.nix
+        ./home/modules/hypr/hypr.nix
+        ./home/modules/hypr/hyprpaper.nix
+        ./home/modules/hypr/hypridle.nix
+        ./home/modules/mako.nix
+      ];
 
-    extraSpecialArgs = {
-      inherit inputs system pkgs username dir stateVersion;
-    };
-
-    mkHomeConfig = modules:
-      home-manager.lib.homeManagerConfiguration {
-        inherit pkgs modules;
-        extraSpecialArgs = extraSpecialArgs;
+      extraSpecialArgs = {
+        inherit
+          inputs
+          system
+          pkgs
+          username
+          dir
+          stateVersion
+          ;
       };
-  in {
 
-    nixosConfigurations.${username} = nixpkgs.lib.nixosSystem {
-      inherit system;
+      mkHomeConfig =
+        modules:
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs modules;
+          extraSpecialArgs = extraSpecialArgs;
+        };
+    in
+    {
 
-      modules = [
-        ./nixos/configuration.nix
+      nixosConfigurations.${username} = nixpkgs.lib.nixosSystem {
+        inherit system;
 
-        home-manager.nixosModules.home-manager
+        modules = [
+          ./nixos/configuration.nix
 
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
+          home-manager.nixosModules.home-manager
 
-          home-manager.users.${username} = {
-            imports = homeModules;
-            home.username = username;
-            home.homeDirectory = dir;
-            home.stateVersion = stateVersion;
-          };
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
 
-          home-manager.extraSpecialArgs = extraSpecialArgs;
-        }
-      ];
+            home-manager.users.${username} = {
+              imports = homeModules;
+              home.username = username;
+              home.homeDirectory = dir;
+              home.stateVersion = stateVersion;
+            };
+
+            home-manager.extraSpecialArgs = extraSpecialArgs;
+          }
+        ];
+      };
+
+      homeConfigurations = {
+        ${username} = mkHomeConfig homeModules;
+      };
+      devShells.${system}.default = pkgs.mkShell {
+        buildInputs = [
+          inputs.home-manager.packages.${system}.home-manager
+          pkgs.jq
+          pkgs.nixpkgs-fmt
+        ];
+      };
     };
-
-    homeConfigurations = {
-      ${username} = mkHomeConfig homeModules;
-    };
-    devShells.${system}.default = pkgs.mkShell {
-      buildInputs = [
-        inputs.home-manager.packages.${system}.home-manager
-        pkgs.jq
-        pkgs.nixpkgs-fmt
-      ];
-    };
-  };
 }

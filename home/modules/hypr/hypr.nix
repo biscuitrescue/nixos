@@ -16,6 +16,8 @@
 windowrule=float,class:org.gnome.Nautilus
 windowrule=size 1119 621,class:org.gnome.Nautilus
 
+gesture = 3, horizontal, workspace
+
 animations {
     bezier=overshot,0.13,0.99,0.29,1.1
     animation=windows,1,4,default,popin 80%
@@ -134,21 +136,21 @@ animations {
 
         "$mod SHIFT,K,resizeactive,0 -40"
         "$mod SHIFT,J,resizeactive,0 40"
-        "$mod SHIFT,L,resizeactive,40 0"
-        "$mod SHIFT,H,resizeactive,-40 0"
+        "$mod,L,resizeactive,40 0"
+        "$mod,H,resizeactive,-40 0"
 
         "$mod SHIFT,LEFT,movewindow,l"
         "$mod SHIFT,RIGHT,movewindow,r"
         "$mod SHIFT,UP,movewindow,u"
         "$mod SHIFT,DOWN,movewindow,d"
-        "$mod CTRL,H,movewindow,l"
-        "$mod CTRL,L,movewindow,r"
+        "$mod SHIFT,H,movewindow,l"
+        "$mod SHIFT,L,movewindow,r"
         "$mod CTRL,K,movewindow,u"
         "$mod CTRL,J,movewindow,d"
 
         "$mod,LEFT,movefocus,l"
-        "$mod,H,movefocus,l"
-        "$mod,L,movefocus,r"
+        "$mod,COMMA,movefocus,l"
+        "$mod,PERIOD,movefocus,r"
         "$mod,J,movefocus,d"
         "$mod,K,movefocus,u"
         "$mod,RIGHT,movefocus,r"
