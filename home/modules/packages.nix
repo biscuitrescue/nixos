@@ -84,6 +84,7 @@
     stylua
     eslint
     black
+    neovide
     # emacs
     libtool
     sqlite
