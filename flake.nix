@@ -39,6 +39,7 @@
         ./home/modules/dark.nix
         ./home/modules/packages.nix
         ./home/modules/hypr/hypr.nix
+        ./home/modules/hypr/river.nix
         ./home/modules/hypr/hyprpaper.nix
         ./home/modules/hypr/hypridle.nix
         ./home/modules/mako.nix
