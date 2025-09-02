@@ -1,8 +1,32 @@
 #!/usr/bin/env bash
-riverctl map normal Super Return spawn kitty 
 
-# Super+Q to close the focused view
+# This is the example configuration file for river.
+#
+# If you wish to edit this, you will probably want to copy it to
+# $XDG_CONFIG_HOME/river/init or $HOME/.config/river/init first.
+#
+# See the river(1), riverctl(1), and rivertile(1) man pages for complete
+# documentation.
+
+
+riverctl spawn "dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS SEATD_SOCK DISPLAY WAYLAND_DISPLAY XAUTHORITY XDG_CURRENT_DESKTOP=river"
+riverctl spawn mako
+riverctl spawn "nm-applet --indicator"
+
+
+riverctl map normal Super Return spawn kitty
+
 riverctl map normal Super Q close
+
+# Reload riverwm
+riverctl map normal Super R spawn "$HOME"/.config/river/init
+
+# Autostart
+#bash "$HOME"/.config/river/autostart.sh
+
+# Launcher
+riverctl map normal Super D spawn "rofi -show drun"
+
 
 # Super+Shift+E to exit river
 riverctl map normal Super+Shift E exit
@@ -48,11 +72,6 @@ riverctl map normal Super+Alt+Control K snap up
 riverctl map normal Super+Alt+Control L snap right
 
 # Super+Alt+Shift+{H,J,K,L} to resize views
-riverctl map normal Super+Alt+Shift H resize horizontal -100
-riverctl map normal Super+Alt+Shift J resize vertical 100
-riverctl map normal Super+Alt+Shift K resize vertical -100
-riverctl map normal Super+Alt+Shift L resize horizontal 100
-
 # Super + Left Mouse Button to move views
 riverctl map-pointer normal Super BTN_LEFT move-view
 
@@ -72,10 +91,10 @@ do
     # Super+Shift+[1-9] to tag focused view with tag [0-8]
     riverctl map normal Super+Shift $i set-view-tags $tags
 
-    # Super+Control+[1-9] to toggle focus of tag [0-8]
+    # Super+Ctrl+[1-9] to toggle focus of tag [0-8]
     riverctl map normal Super+Control $i toggle-focused-tags $tags
 
-    # Super+Shift+Control+[1-9] to toggle tag [0-8] of focused view
+    # Super+Shift+Ctrl+[1-9] to toggle tag [0-8] of focused view
     riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
 done
 
@@ -85,17 +104,53 @@ all_tags=$(((1 << 32) - 1))
 riverctl map normal Super 0 set-focused-tags $all_tags
 riverctl map normal Super+Shift 0 set-view-tags $all_tags
 
+
+scratch_tag=$((1 << 20 ))
+
+riverctl map normal Super P toggle-focused-tags ${scratch_tag}		# toggle the scratchpad
+riverctl map normal Super+Shift P set-view-tags ${scratch_tag}		# send windows to the scratchpad
+
+# Set spawn tagmask to ensure new windows do not have the scratchpad tag unless explicitly set.
+all_but_scratch_tag=$(( ((1 << 32) - 1) ^ $scratch_tag ))
+riverctl spawn-tagmask ${all_but_scratch_tag}
+
 # Super+Space to toggle float
 riverctl map normal Super Space toggle-float
 
 # Super+F to toggle fullscreen
 riverctl map normal Super F toggle-fullscreen
 
+# Mod+H and Mod+L to decrease/increase the main ratio of rivercarro
+# riverctl map normal Super H send-layout-cmd rivercarro "main-ratio -0.05"
+# riverctl map normal Super L send-layout-cmd rivercarro "main-ratio +0.05"
+
+# Mod+Shift+H and Mod+Shift+L to increment/decrement the main count of rivercarro
+# riverctl map normal Super+Shift H send-layout-cmd rivercarro "main-count +1"
+# riverctl map normal Super+Shift L send-layout-cmd rivercarro "main-count -1"
+
+# Mod+{Up,Right,Down,Left} to change layout orientation
+riverctl map normal Super Up    send-layout-cmd rivercarro "main-location top"
+riverctl map normal Super Right send-layout-cmd rivercarro "main-location right"
+riverctl map normal Super Down  send-layout-cmd rivercarro "main-location bottom"
+riverctl map normal Super Left  send-layout-cmd rivercarro "main-location left"
+# And for monocle
+riverctl map normal Super M     send-layout-cmd rivercarro "main-location monocle"
+
+# Add others rivercarrro's commands the same way with the keybinds you'd like.
+# e.g.
+# riverctl map normal $mod <keys> send-layout-cmd rivercarro "inner-gaps -1"
+#riverctl map normal Super V send-layout-cmd rivercarro "inner-gaps +1"
+# riverctl map normal $mod <keys> send-layout-cmd rivercarro "outer-gaps -1"
+#riverctl map normal Super N send-layout-cmd rivercarro "outer-gaps -1"
+# riverctl map normal $mod <keys> send-layout-cmd rivercarro "width-ratio -0.1"
+# riverctl map normal $mod <keys> send-layout-cmd rivercarro "width-ratio +0.1"
+
+
 # Super+{Up,Right,Down,Left} to change layout orientation
-riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
-riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
-riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
-riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
+#riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
+#riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
+#riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
+#riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
 
 # Declare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor
@@ -115,36 +170,93 @@ do
     riverctl map $mode None XF86Eject spawn 'eject -T'
 
     # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
-    riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
-    riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
-    riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
+    riverctl map $mode None XF86AudioRaiseVolume  spawn "$HOME/.config/river/scripts/volume --inc"
+    riverctl map $mode None XF86AudioLowerVolume  spawn "$HOME/.config/river/scripts/volume --dec"
+    riverctl map $mode None XF86AudioMute         spawn "$HOME/.config/river/scripts/volume --toggle"
 
     # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
     riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
     riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
+    riverctl map $mode None XF86AudioStop  spawn 'playerctl stop'
     riverctl map $mode None XF86AudioPrev  spawn 'playerctl previous'
     riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
 
-    # Control screen backlight brightness with brightnessctl (https://github.com/Hummer12007/brightnessctl)
-    riverctl map $mode None XF86MonBrightnessUp   spawn 'brightnessctl set +5%'
-    riverctl map $mode None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'
+    # Control screen backlight brightness with light (https://github.com/haikarainen/light)
+    riverctl map $mode None XF86MonBrightnessUp   spawn "$HOME/.config/river/scripts/backlight --inc"
+    riverctl map $mode None XF86MonBrightnessDown spawn "$HOME/.config/river/scripts/backlight --dec"
 done
 
 # Set background and border color
-riverctl background-color 0x002b36
-riverctl border-color-focused 0x93a1a1
-riverctl border-color-unfocused 0x586e75
+#riverctl background-color 0x002b36
+riverctl background-color 0x1E1D2F
+riverctl border-color-focused 0xFAE3B0
+riverctl border-color-unfocused 0xABE9B3
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
 
+
+# Make certain views start floating
+riverctl float-filter-add app-id float
+riverctl float-filter-add app-id 'pavucontrol'
+riverctl float-filter-add app-id 'Timeshift-gtk'
+riverctl float-filter-add app-id 'pavucontrol'
+riverctl float-filter-add app-id 'nm-connection-editor'
+riverctl float-filter-add app-id 'nwg-look'
+riverctl float-filter-add app-id 'valent'
+riverctl float-filter-add app-id 'file-roller'
+riverctl float-filter-add app-id 'GParted'
+riverctl float-filter-add app-id 'ristretto'
+riverctl float-filter-add title "popup title with spaces"
+riverctl float-filter-add title "Open File"
+riverctl float-filter-add title "File Operation Progress"
+riverctl float-filter-add title "Preferences"
+riverctl float-filter-add title "dialog"
+riverctl float-filter-add title "Picture-in-Picture"
+riverctl float-filter-add title "bubble"
+riverctl float-filter-add title "task_dialog"
+riverctl float-filter-add title "menu"
+riverctl float-filter-add title "Confirm to replace files"
+
+# Set app-ids and titles of views which should use client side decorations
+riverctl csd-filter-add app-id "gedit"
+#riverctl csd-filter-remove app-id "thunar"
+
 # Make all views with an app-id that starts with "float" and title "foo" start floating.
-riverctl rule-add -app-id 'float*' -title 'foo' float
+#riverctl rule-add -app-id 'float*' -title 'foo' float
+#riverctl rule-add -app-id 'float*' -title 'popup title with spaces' float
+#riverctl rule-add float "file-roller"
+#riverctl rule-add float -app-id "pavucontrol"
+#riverctl rule-add float "Timeshift-gtk"
+#riverctl rule-add float -app-id "Timeshift-gtk"
 
 # Make all views with app-id "bar" and any title use client-side decorations
-riverctl rule-add -app-id "bar" csd
+#riverctl rule-add -app-id "bar" csd
+#riverctl rule-add -app-id "gedit" csd
+#riverctl rule-add ssd -app-id "thunar"
+#riverctl rule-add ssd -app-id "google-chrome"
+
+# Set Tochpad
+riverctl input pointer-1267-12608-MSFT0001:00_04F3:3140_Touchpad tap enabled
+riverctl input pointer-1267-12608-MSFT0001:00_04F3:3140_Touchpad drag enabled
+riverctl input pointer-1267-12608-MSFT0001:00_04F3:3140_Touchpad disable-while-typing enabled enabled
+riverctl input pointer-1267-12608-MSFT0001:00_04F3:3140_Touchpad middle-emulation enabled
+riverctl input pointer-1267-12608-MSFT0001:00_04F3:3140_Touchpad natural-scroll enabled
+riverctl input pointer-1267-12608-MSFT0001:00_04F3:3140_Touchpad tap-button-map left-right-middle
+riverctl input pointer-1267-12608-MSFT0001:00_04F3:3140_Touchpad scroll method two-finger
+riverctl focus-follows-cursor normal
+riverctl hide-cursor when-typing enabled
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
-riverctl default-layout rivertile
+#riverctl spawn rivertile
+#riverctl output-layout rivertile
+#riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
+
+# Set and exec into the default layout generator, rivercarro.
+# River will send the process group of the init executable SIGTERM on exit.
+riverctl default-layout rivertile
+# exec rivercarro -no-smart-gaps &
+exec wlr-randr --output eDP-1 --scale 1.25 &
+exec waybar &
