@@ -64,6 +64,8 @@
     any-nix-shell
     hpx
     ghostty
+    ripgrep
+    gh
     # Langs
     go
     luajit
@@ -80,7 +82,6 @@
     # neovim
     neovim
     deno
-    ripgrep
     stylua
     eslint
     black
@@ -94,4 +95,5 @@
   programs = {
     home-manager.enable = true;
   };
+
 }

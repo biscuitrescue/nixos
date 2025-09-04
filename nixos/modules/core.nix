@@ -49,6 +49,7 @@
   services = {
     # logind.lidSwitch = "ignore";
 
+    cloudflare-warp.enable = true;
     gvfs.enable = true;
     samba.enable = true;
     dbus.enable = true;

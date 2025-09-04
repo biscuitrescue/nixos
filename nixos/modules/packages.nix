@@ -6,7 +6,8 @@
      })
   ];
   environment.systemPackages = with pkgs; [
-    code-cursor
+    cloudflare-warp
+    openvpn
     direnv
     nix-direnv
     tailscale
