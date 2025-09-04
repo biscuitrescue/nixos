@@ -1,6 +1,6 @@
 { pkgs, ... }: {
 
-  wayland.windowManager.river = {
+  wayland.windowManager.river-classic = {
     enable = true;
     settings = {
       border-width = 2;

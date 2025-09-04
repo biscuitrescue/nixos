@@ -157,6 +157,7 @@
 
   nix = {
     settings = {
+      max-jobs = 8;
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
       flake-registry = "";
