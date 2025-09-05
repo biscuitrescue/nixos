@@ -2,6 +2,7 @@
 
   home.packages = with pkgs; [
     sunshine
+    kdePackages.kdenlive
     rustdesk-server
     hyprsunset
     fastfetch
