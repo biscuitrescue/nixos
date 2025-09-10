@@ -78,7 +78,6 @@
     openssh = {
       enable = true;
       settings.PasswordAuthentication = false;
-      ports = [ 22 443 ];
     };
     tailscale.enable = true;
     printing.enable = false;
