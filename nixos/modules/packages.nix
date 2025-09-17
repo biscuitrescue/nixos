@@ -36,7 +36,7 @@
     killall
     pulseaudio
     ntfs3g
-    python3Full
+    python314
     python313Packages.pip
     protonvpn-cli
   ];

@@ -91,6 +91,7 @@
     libtool
     sqlite
     ispell
+    zed
     inputs.zen-browser.packages."${system}".default
   ];
   programs = {
