@@ -68,9 +68,7 @@
     ripgrep
     gh
     # Langs
-    go
     luajit
-    zig
     # lsp + highlight
     tree-sitter
     nodejs-slim
@@ -79,7 +77,6 @@
     python313Packages.python-lsp-server
     rust-analyzer
     lua-language-server
-    zls
     # neovim
     neovim
     deno
@@ -87,11 +84,11 @@
     eslint
     black
     neovide
-    # emacs
+    emacs
     libtool
     sqlite
     ispell
-    zed
+    zed-editor
     inputs.zen-browser.packages."${system}".default
   ];
   programs = {
