@@ -1,5 +1,13 @@
 { lib, pkgs, ... }: {
 
+  fileSystems = {
+    "/home/cafo/vm/" = {
+      device = "UUID=4a5e7d30-f2a6-4a0f-b755-99fc9814aaf0";
+      mountPoint = "/home/cafo/vm";
+      fsType = "ext4";
+      options = [ "defaults" "rw" "user" ];
+    };
+  };
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
 
