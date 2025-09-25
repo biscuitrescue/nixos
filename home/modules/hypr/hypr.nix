@@ -60,7 +60,6 @@ animations {
       cursor.no_hardware_cursors = 1;
       input = {
         kb_layout = "us";
-        # sensitivity = 0.15;
         follow_mouse = 1;
         touchpad = {
           natural_scroll = true;
@@ -78,7 +77,7 @@ animations {
       general = {
         gaps_in = 3;
         gaps_out = 5;
-        border_size = 1;
+        border_size = 2;
         "col.active_border" = "0xff95aec7";
         "col.inactive_border" = "0xff45475a";
         layout = "master";
