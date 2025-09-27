@@ -6,6 +6,11 @@
     samba.enable = true;
     dbus.enable = true;
 
+    emacs = {
+      enable = true;
+      package = pkgs.emacs;
+    };
+
     # openvpn = {
     #   servers = {
     #     server = {

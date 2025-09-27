@@ -2,31 +2,33 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   wayland.windowManager.hyprland = {
-    systemd.variables = ["--all"];
+    systemd.variables = [ "--all" ];
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
     extraConfig = ''
 
-#layerrule = blur, waybar
+      #layerrule = blur, waybar
 
-windowrule=float,class:org.gnome.Nautilus
-windowrule=size 1119 621,class:org.gnome.Nautilus
+      windowrule=float,class:org.gnome.Nautilus
+      windowrule=size 1119 621,class:org.gnome.Nautilus
 
-gesture = 3, horizontal, workspace
+      gesture = 3, horizontal, workspace
 
-animations {
-    bezier=overshot,0.13,0.99,0.29,1.1
-    animation=windows,1,4,default,popin 80%
-    animation=border,1,10,default
-    animation=fade,1,10,default
-    animation=workspaces,1,6,default,slide
-    animation=specialWorkspace,1,4,overshot,slidevert
-    enabled=1
-}
+      animations {
+          bezier=overshot,0.13,0.99,0.29,1.1
+          animation=windows,1,4,default,popin 80%
+          animation=border,1,10,default
+          animation=fade,1,10,default
+          animation=workspaces,1,6,default,slide
+          animation=specialWorkspace,1,4,overshot,slidevert
+          enabled=1
+      }
     '';
 
     settings = {
@@ -106,7 +108,7 @@ animations {
         "$mod, Q, killactive"
 
         "$mod, minus, exec, wayblur"
-        
+
         ",XF86AudioNext,exec,playerctl next"
         ",XF86AudioPrev,exec,playerctl previous"
         ",XF86AudioStop,exec,playerctl stop"
@@ -162,16 +164,18 @@ animations {
         "$mod,P,togglespecialworkspace,term"
         "$mod,W,fullscreen,"
       ]
-        ++ (
-          builtins.concatLists (builtins.genList (i:
-            let ws = i + 1;
-            in [
-              "$mod, code:1${toString i}, workspace, ${toString ws}"
-              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-            ]
-          )
-            10)
-        );
+      ++ (builtins.concatLists (
+        builtins.genList (
+          i:
+          let
+            ws = i + 1;
+          in
+          [
+            "$mod, code:1${toString i}, workspace, ${toString ws}"
+            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+          ]
+        ) 10
+      ));
     };
   };
 }

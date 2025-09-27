@@ -1,5 +1,11 @@
-{ pkgs, inputs, system, username, ... }: {
-
+{
+  pkgs,
+  inputs,
+  system,
+  username,
+  ...
+}:
+{
   home.packages = with pkgs; [
     sunshine
     kdePackages.kdenlive
@@ -67,9 +73,7 @@
     ghostty
     ripgrep
     gh
-    # Langs
     luajit
-    # lsp + highlight
     tree-sitter
     nodejs-slim
     gopls
@@ -77,22 +81,20 @@
     python313Packages.python-lsp-server
     rust-analyzer
     lua-language-server
-    # neovim
     neovim
     deno
     stylua
     eslint
     black
     neovide
-    emacs
     libtool
     sqlite
     ispell
     zed-editor
+    nixfmt
     inputs.zen-browser.packages."${system}".default
   ];
   programs = {
     home-manager.enable = true;
   };
-
 }
