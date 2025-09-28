@@ -27,7 +27,7 @@
           animation=fade,1,10,default
           animation=workspaces,1,6,default,slide
           animation=specialWorkspace,1,4,overshot,slidevert
-          enabled=1
+          enabled=0
       }
     '';
 
@@ -42,7 +42,7 @@
         "swayidle -w timeout 900 'wayblur' before-sleep 'wayblur'"
       ];
       decoration = {
-        rounding = "4";
+        rounding = "0";
         blur = {
           enabled = true;
           size = 5;
@@ -77,8 +77,8 @@
       monitor = "eDP-1, 1920x1080@59.99900, auto, 1.25";
 
       general = {
-        gaps_in = 3;
-        gaps_out = 5;
+        gaps_in = 0;
+        gaps_out = 0;
         border_size = 2;
         "col.active_border" = "0xff95aec7";
         "col.inactive_border" = "0xff45475a";
