@@ -92,6 +92,7 @@
     ispell
     zed-editor
     nixfmt
+    xorg.xwininfo
     inputs.zen-browser.packages."${system}".default
   ];
   programs = {
