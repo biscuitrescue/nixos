@@ -79,8 +79,8 @@
       general = {
         gaps_in = 0;
         gaps_out = 0;
-        border_size = 2;
-        "col.active_border" = "0xff95aec7";
+        border_size = 1;
+        "col.active_border" = "0xff8a968f";
         "col.inactive_border" = "0xff45475a";
         layout = "master";
         resize_on_border = true;
@@ -102,6 +102,7 @@
 
       bind = [
         "$mod, RETURN, exec, kitty"
+        "$mod, T, exec, emacsclient -ce '(+vterm/here nil)'"
         "$mod, D, exec, rofi -show drun"
         "$mod, R, exec, rofi -show run"
         "$mod SHIFT,Q,exec, hyprctl dispatch exit"
