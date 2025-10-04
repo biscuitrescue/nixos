@@ -8,8 +8,6 @@
 {
   home.packages = with pkgs; [
     sunshine
-    kdePackages.kdenlive
-    rustdesk-server
     hyprsunset
     fastfetch
     fzf
@@ -19,10 +17,6 @@
     pavucontrol
     hypridle
     spotify-player
-    evince
-    foliate
-    nwg-look
-    catppuccin-gtk
     zathura
     qbittorrent
     playerctl
@@ -41,7 +35,6 @@
     swaylock-effects
     swayidle
     networkmanagerapplet
-    alacritty
     bat
     eza
     git
@@ -51,7 +44,6 @@
     light
     alsa-utils
     pamixer
-    dunst
     mako
     glew
     maim
@@ -60,17 +52,14 @@
     wmctrl
     waybar
     neofetch
-    xclip
     starship
     tmux
-    xss-lock
     libnotify
     ranger
     chafa
     ueberzugpp
     any-nix-shell
     hpx
-    ghostty
     ripgrep
     gh
     luajit
@@ -86,7 +75,6 @@
     stylua
     eslint
     black
-    neovide
     libtool
     sqlite
     ispell

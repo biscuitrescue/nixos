@@ -1,31 +1,11 @@
 { lib, pkgs, ... }: {
 
-  fileSystems = {
-    "/home/cafo/vm/" = {
-      device = "UUID=4a5e7d30-f2a6-4a0f-b755-99fc9814aaf0";
-      mountPoint = "/home/cafo/vm";
-      fsType = "ext4";
-      options = [ "defaults" "rw" "user" ];
-    };
-  };
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
 
-    loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
-      grub = {
-        enable = true;
-        devices = ["nodev"];
-        efiSupport = true;
-        useOSProber = true;
-        configurationLimit = 5;
-      };
-      timeout = 5;
-    };
-  };
+	  loader.systemd-boot.enable = true;
+	  loader.efi.canTouchEfiVariables = true;
+};
 
   networking = {
     hostName = "nixos";
@@ -61,7 +41,6 @@
 
   # hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 

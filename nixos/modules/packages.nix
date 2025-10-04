@@ -25,10 +25,8 @@
     unzip
     zip
     glib
-    veracrypt
     baobab
     bleachbit
-    brave
     tcpdump
     exfat
     exfatprogs
@@ -37,7 +35,6 @@
     pulseaudio
     ntfs3g
     python314
-    python313Packages.pip
     protonvpn-cli
   ];
 

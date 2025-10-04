@@ -8,25 +8,25 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/33c65e10-898d-41ec-9f10-07471892ca71";
+    { device = "/dev/disk/by-uuid/c9116efa-223f-45c9-a4f8-da98f2094cc5";
       fsType = "ext4";
     };
 
+  boot.initrd.luks.devices."luks-5717b555-3974-4a5a-b585-bfa375efb23b".device = "/dev/disk/by-uuid/5717b555-3974-4a5a-b585-bfa375efb23b";
+
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8391-401A";
+    { device = "/dev/disk/by-uuid/2B95-A55F";
       fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+      options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/7d067879-9101-4800-9cfd-748f6d7ddad2"; }
-    ];
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
