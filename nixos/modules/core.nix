@@ -62,13 +62,16 @@
     ];
   };
 
-  systemd.services.sshd.wantedBy = lib.mkForce [ ];
-  systemd.sleep.extraConfig = ''
-    AllowSuspend=yes
-    AllowHibernation=no
-    AllowHybridSleep=yes
-    AllowSuspendThenHibernate=no
-  '';
+  systemd = {
+    services.sshd.wantedBy = lib.mkForce [ ];
+    sleep.extraConfig = ''
+      AllowSuspend=yes
+      AllowHibernation=no
+      AllowHybridSleep=yes
+      AllowSuspendThenHibernate=no
+      '';
+    services.nix-daemon.serviceConfig.EnvironmentFile = "../../nix-daemon-environment";
+  };
 
   security = {
     polkit.enable = true;

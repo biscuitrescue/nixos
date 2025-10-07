@@ -56,7 +56,7 @@
     starship
     tmux
     libnotify
-    ranger
+    yazi
     chafa
     ueberzugpp
     any-nix-shell
