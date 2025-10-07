@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     sunshine
     hyprsunset
+    zig
     fastfetch
     fzf
     vlc
