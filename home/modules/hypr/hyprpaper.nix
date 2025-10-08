@@ -9,11 +9,11 @@
       splash_offset = 2.0;
 
       preload =
-        [ "/home/cafo/git/wallpapers/gruvbox_11.png" ];
+        [ "/home/cafo/git/wallpapers/coffee-shop.png" ];
 
 
       wallpaper = [
-        "eDP-1, /home/cafo/git/wallpapers/gruvbox_11.png"
+        "eDP-1, /home/cafo/git/wallpapers/coffee-shop.png"
       ]; 
     };
   };

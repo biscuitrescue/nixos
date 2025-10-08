@@ -2,7 +2,6 @@
   pkgs,
   inputs,
   system,
-  username,
   ...
 }:
 {
@@ -44,10 +43,11 @@
     rofi
     light
     alsa-utils
-    pamixer
+    vivaldi
+    vivaldi-ffmpeg-codecs
+    # pamixer
+    # icu
     mako
-    glew
-    maim
     polkit_gnome
     xdotool
     wmctrl
@@ -82,6 +82,8 @@
     zed-editor
     nixfmt
     xorg.xwininfo
+    # vivaldi
+    # vivaldi-ffmpeg-codecs
     inputs.zen-browser.packages."${system}".default
   ];
   programs = {

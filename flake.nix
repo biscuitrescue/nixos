@@ -31,7 +31,11 @@
       dir = "/home/${username}";
       stateVersion = "25.05";
 
-      pkgs = nixpkgs.legacyPackages.${system};
+      # pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
 
       homeModules = [
         ./home/modules/core.nix
