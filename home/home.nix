@@ -76,8 +76,8 @@
   gtk = {
     enable = true;
     font = {
-      name = "M Plus 1 Code Regular";
-      size = 11;
+      name = "Zed Sans";
+      size = 10;
     };
   };
 
