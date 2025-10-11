@@ -37,6 +37,9 @@
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/rofi";
       recursive = true;
     };
+    ".zshrc" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/.zshrc";
+    };
     ".config/fish" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/fish";
       recursive = true;

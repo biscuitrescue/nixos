@@ -42,7 +42,7 @@
         "swayidle -w timeout 900 'wayblur' before-sleep 'wayblur'"
       ];
       decoration = {
-        rounding = "0";
+        rounding = "4";
         blur = {
           enabled = true;
           size = 5;
@@ -77,8 +77,8 @@
       monitor = "eDP-1, 1920x1080@59.99900, auto, 1.25";
 
       general = {
-        gaps_in = 0;
-        gaps_out = 0;
+        gaps_in = 3;
+        gaps_out = 5;
         border_size = 1;
         "col.active_border" = "0xff8a968f";
         "col.inactive_border" = "0xff45475a";
@@ -159,6 +159,8 @@
         "$mod,UP,movefocus,u"
         "$mod,DOWN,movefocus,d"
         "$mod,F,togglefloating"
+        "$mod,O,togglespecialworkspace,emacs"
+        "$mod SHIFT,O,movetoworkspace,special:emacs"
         "$mod SHIFT,space,movetoworkspace,special:base"
         "$mod SHIFT,P,movetoworkspace,special:term"
         "$mod,space,togglespecialworkspace,base"

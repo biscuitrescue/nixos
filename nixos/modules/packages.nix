@@ -17,7 +17,9 @@
     discord
     cmake
     obsidian
-    llvmPackages_20.clang-tools
+    llvmPackages_21.clang-tools
+    libllvm
+    triton-llvm
     nmap
     libgccjit
     gcc
@@ -57,6 +59,7 @@
       withUWSM = true;
     };
 
+    zsh.enable = true;
     fish.enable = true;
     firefox.enable = true;
     nix-ld.enable = true;
