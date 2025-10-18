@@ -45,7 +45,7 @@
     alsa-utils
     vivaldi
     vivaldi-ffmpeg-codecs
-    # pamixer
+    pamixer
     # icu
     mako
     polkit_gnome
