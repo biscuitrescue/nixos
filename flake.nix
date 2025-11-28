@@ -56,7 +56,7 @@
           username
           dir
           stateVersion
-          ;
+        ;
       };
 
       mkHomeConfig =
@@ -66,42 +66,42 @@
           extraSpecialArgs = extraSpecialArgs;
         };
     in
-    {
+      {
 
-      nixosConfigurations.${username} = nixpkgs.lib.nixosSystem {
-        inherit system;
+        nixosConfigurations.${username} = nixpkgs.lib.nixosSystem {
+          inherit system;
 
-        modules = [
-          ./nixos/configuration.nix
+          modules = [
+            ./nixos/configuration.nix
 
-          home-manager.nixosModules.home-manager
+            home-manager.nixosModules.home-manager
 
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
 
-            home-manager.users.${username} = {
-              imports = homeModules;
-              home.username = username;
-              home.homeDirectory = dir;
-              home.stateVersion = stateVersion;
-            };
+              home-manager.users.${username} = {
+                imports = homeModules;
+                home.username = username;
+                home.homeDirectory = dir;
+                home.stateVersion = stateVersion;
+              };
 
-            home-manager.extraSpecialArgs = extraSpecialArgs;
-          }
-        ];
+              home-manager.extraSpecialArgs = extraSpecialArgs;
+            }
+          ];
+        };
+
+        homeConfigurations = {
+          ${username} = mkHomeConfig homeModules;
+        };
+        devShells.${system}.default = pkgs.mkShell {
+          buildInputs = [
+            inputs.home-manager.packages.${system}.home-manager
+            pkgs.jq
+            pkgs.nixpkgs-fmt
+          ];
+        };
       };
-
-      homeConfigurations = {
-        ${username} = mkHomeConfig homeModules;
-      };
-      devShells.${system}.default = pkgs.mkShell {
-        buildInputs = [
-          inputs.home-manager.packages.${system}.home-manager
-          pkgs.jq
-          pkgs.nixpkgs-fmt
-        ];
-      };
-    };
 }

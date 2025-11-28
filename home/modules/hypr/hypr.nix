@@ -15,8 +15,8 @@
 
       #layerrule = blur, waybar
 
-      windowrule=float,class:org.gnome.Nautilus
-      windowrule=size 1119 621,class:org.gnome.Nautilus
+      # windowrule=float,class:org.gnome.Nautilus
+      # windowrule=size 1119 621,class:org.gnome.Nautilus
 
       gesture = 3, horizontal, workspace
 
@@ -74,7 +74,7 @@
         workspace_swipe_forever = true;
       };
 
-      monitor = "eDP-1, 1920x1080@59.99900, auto, 1.25";
+      monitor = "eDP-1, 1920x1080@59.99900, auto, 1.25, bitdepth, 10, cm";
 
       general = {
         gaps_in = 3;

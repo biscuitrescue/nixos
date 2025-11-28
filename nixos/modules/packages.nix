@@ -37,7 +37,6 @@
     pulseaudio
     ntfs3g
     python314
-    protonvpn-cli
   ];
 
   programs = {

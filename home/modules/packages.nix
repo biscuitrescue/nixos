@@ -8,7 +8,8 @@
   home.packages = with pkgs; [
     sunshine
     hyprsunset
-    zig
+    zig_0_14
+    zls_0_14
     fastfetch
     fzf
     vlc
@@ -46,6 +47,7 @@
     vivaldi
     vivaldi-ffmpeg-codecs
     pamixer
+    luajitPackages.luacheck
     # icu
     mako
     polkit_gnome
