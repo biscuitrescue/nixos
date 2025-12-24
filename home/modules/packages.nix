@@ -8,8 +8,6 @@
   home.packages = with pkgs; [
     sunshine
     hyprsunset
-    zig_0_14
-    zls_0_14
     fastfetch
     fzf
     vlc
@@ -71,7 +69,6 @@
     gopls
     nil
     python313Packages.python-lsp-server
-    rust-analyzer
     lua-language-server
     neovim
     deno
@@ -84,8 +81,6 @@
     zed-editor
     nixfmt
     xorg.xwininfo
-    # vivaldi
-    # vivaldi-ffmpeg-codecs
     inputs.zen-browser.packages."${system}".default
   ];
   programs = {

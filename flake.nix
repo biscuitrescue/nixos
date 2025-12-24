@@ -9,8 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
-
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,12 +20,11 @@
       self,
       nixpkgs,
       home-manager,
-      hyprland,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
-      username = "cafo";
+      username = "karttikeya";
       dir = "/home/${username}";
       stateVersion = "25.05";
 

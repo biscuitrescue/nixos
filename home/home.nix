@@ -2,61 +2,61 @@
 
   home.file = {
     "scripts/" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/scripts";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/scripts";
       recursive = true;
     };
     ".config/nvim/" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/nvim";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/nvim";
       recursive = true;
     };
     ".local/share/fonts" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/fonts";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/fonts";
       recursive = true;
     };
     ".config/ranger" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/ranger";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/dotfiles/config/ranger";
       recursive = true;
     };
     ".config/zathura" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/zathura";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/dotfiles/config/zathura";
       recursive = true;
     };
     ".config/dunst" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/dunst";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/dotfiles/config/dunst";
       recursive = true;
     };
     ".config/kitty" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/kitty";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/dotfiles/config/kitty";
       recursive = true;
     };
     ".config/alacritty" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/alacritty";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/dotfiles/config/alacritty";
       recursive = true;
     };
     ".config/rofi" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/rofi";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/dotfiles/config/rofi";
       recursive = true;
     };
     ".zshrc" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/.zshrc";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/dotfiles/.zshrc";
     };
     ".config/fish" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/fish";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/dotfiles/config/fish";
       recursive = true;
     };
     ".config/waybar" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/waybar";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/dotfiles/config/waybar";
       recursive = true;
     };
     ".config/easyeffects" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/easyeffects";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/dotfiles/config/easyeffects";
       recursive = true;
     };
     ".config/starship.toml" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/starship.toml";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/dotfiles/config/starship.toml";
     };
     ".config/qtile" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/cafo/git/dotfiles/config/qtile";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/karttikeya/git/dotfiles/config/qtile";
       recursive = true;
     };
   };

@@ -14,15 +14,10 @@
     spotify
     vim
     clang
-    discord
-    cmake
-    obsidian
-    llvmPackages_21.clang-tools
-    libllvm
-    triton-llvm
-    nmap
-    libgccjit
     gcc
+    discord
+    obsidian
+    nmap
     wget
     unzip
     zip

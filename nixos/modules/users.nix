@@ -1,4 +1,4 @@
-{config, lib, pkgs, ...}: let user = "cafo"; in {
+{config, lib, pkgs, ...}: let user = "karttikeya"; in {
   users.users.${user}= {
     isNormalUser = true;
     description = "Karttikeya Sinha";

@@ -3,8 +3,13 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
 
-	  loader.systemd-boot.enable = true;
-	  loader.efi.canTouchEfiVariables = true;
+	  loader = {
+
+		  systemd-boot.enable = true;
+		  efi.canTouchEfiVariables = true;
+	  };
+
+	  initrd.luks.devices."luks-91487dfb-fa68-49b9-aa2e-d47b9f15f2df".device = "/dev/disk/by-uuid/91487dfb-fa68-49b9-aa2e-d47b9f15f2df";
 };
 
   networking = {

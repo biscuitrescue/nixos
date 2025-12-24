@@ -9,11 +9,11 @@
       splash_offset = 2.0;
 
       preload =
-        [ "/home/cafo/git/wallpapers/basement.jpg" ];
+        [ "/home/karttikeya/git/wallpapers/chaos_rose.png" ];
 
 
       wallpaper = [
-        "eDP-1, /home/cafo/git/wallpapers/basement.jpg"
+        "eDP-1, /home/karttikeya/git/wallpapers/chaos_rose.png"
       ]; 
     };
   };
