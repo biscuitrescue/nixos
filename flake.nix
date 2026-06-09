@@ -65,7 +65,9 @@
         modules = [
           ./nixos/configuration.nix
           nixos-hardware.nixosModules.lenovo-ideapad-slim-5
-
+          {
+            nixpkgs.config.allowUnfree = true;
+          }
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -74,7 +76,9 @@
               backupFileExtension = "backup";
               extraSpecialArgs = extraSpecialArgs // { inherit pkgs; };
 
-              users.${vars.username} = { imports = homeModules; };
+              users.${vars.username} = {
+                imports = homeModules;
+              };
             };
           }
         ];

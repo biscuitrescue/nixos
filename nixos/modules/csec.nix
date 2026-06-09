@@ -1,5 +1,5 @@
 { pkgs, username, ... }: {
-  
+
   programs.wireshark = {
     enable = true;
     package = pkgs.wireshark;
@@ -24,11 +24,5 @@
     hashcat
     john
     thc-hydra
-
-    ghidra-bin
-    radare2
-    iaito
-    gdb
-    pwndbg
   ];
 }

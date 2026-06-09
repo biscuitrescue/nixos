@@ -1,6 +1,5 @@
 { pkgs, ... }: {
   services = {
-    cloudflare-warp.enable = true;
     gvfs.enable = true;
     samba.enable = true;
     dbus.enable = true;

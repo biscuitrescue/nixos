@@ -106,6 +106,14 @@
     ];
 
     initContent = ''
+      typeset -U path
+      path+=("$HOME/.cargo/bin")
+      path+=("$HOME/.local/bin")
+      path+=("$HOME/scripts/bash")
+      path+=("$HOME/scripts/c")
+      path+=("$HOME/scripts/python")
+
+
       # Completion styles
       zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
       zstyle ':completion:*' group-name ""
