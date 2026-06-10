@@ -3,8 +3,6 @@
     enable = true;
 
     history = {
-      # OPTIMIZATION: Lowered from 1 billion to highly performant, massive defaults.
-      # 1 billion records will eventually severely lag multi-sync history features.
       size = 100000;
       save = 50000;
       path = "$HOME/.histfile";
@@ -18,34 +16,30 @@
     defaultKeymap = "emacs";
 
     shellAliases = {
-      # Navigation
       ".."    = "cd ..";
       "..."   = "cd ../..";
       "...."  = "cd ../../..";
       "....." = "cd ../../../..";
 
-      # Editor
-      vim = "nvim";
-      v   = "nvim";
+      vim = "env NIX_LD_LIBRARY_PATH=\$(nix-ld-config) nvim";
+      v   = "env NIX_LD_LIBRARY_PATH=\$(nix-ld-config) nvim";
       ":q" = "exit";
 
-      # Cloudflare WARP
       wcc = "warp-cli connect";
       wdd = "warp-cli disconnect";
 
-      # Git shorthands
-      clone   = "git clone";
-      pull    = "git pull";
-      add     = "git add";
-      rmm     = "git rm";
-      remlist = "git remote -v";
-      commit  = "git commit";
-      branch  = "git branch";
-      addrem  = "git remote add";
-      rmrem   = "git remote remove";
-      push    = "git push";
-      init    = "git init";
-      save    = "git config --global credential.helper store";
+      clone    = "git clone";
+      pull     = "git pull";
+      add      = "git add";
+      rmm      = "git rm";
+      remlist  = "git remote -v";
+      commit   = "git commit";
+      branch   = "git branch";
+      addrem   = "git remote add";
+      rmrem    = "git remote remove";
+      push     = "git push";
+      init     = "git init";
+      save     = "git config --global credential.helper store";
       checkout = "git checkout";
 
       # Nix
@@ -54,14 +48,12 @@
       up  = "sudo nixos-rebuild switch --flake ~/nixos#cafo --upgrade-all";
       reb = "sudo nixos-rebuild switch --flake ~/nixos#cafo";
 
-      # ls replacements (eza)
       ll  = "eza -al --color=always --group-directories-first";
       la  = "eza -a --color=always --group-directories-first";
       ls  = "eza -l --color=always --group-directories-first";
       lt  = "eza -aT --color=always --group-directories-first";
       "l." = "eza -a | grep -E '^\\.'";
 
-      # Misc
       pipes    = "pipes-rs -k curved -p 3 -t 0.13 -r 0.6";
       fetch    = "fastfetch";
       tmsource = "tmux source-file ~/.config/tmux/tmux.conf";
@@ -70,10 +62,6 @@
     };
 
     sessionVariables = {
-      EDITOR    = "emacsclient -ca ''";
-      MANPAGER  = "nvim +Man!";
-      TERM      = "xterm-256color";
-      COLORTERM = "truecolor";
       FZF_DEFAULT_OPTS = ''
         --color=bg+:#293334,bg:#0c0c0c,spinner:#da627d,hl:#F02D3A
         --color=fg:#bdc4a7,header:#987284,info:#7e8dba,pointer:#9FC490
@@ -91,6 +79,10 @@
         --scrollbar="│"
         --info="right"
       '';
+
+      ZSH_AUTOSUGGEST_STRATEGY = "history completion";
+      ZSH_AUTOSUGGEST_USE_ASYNC = "true";
+      ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE = "20";
     };
 
     syntaxHighlighting.enable = true;
@@ -113,23 +105,34 @@
       path+=("$HOME/scripts/c")
       path+=("$HOME/scripts/python")
 
-
-      # Completion styles
-      zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
       zstyle ':completion:*' group-name ""
-      zstyle ':completion:*' matcher-list "" 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
-      zstyle ':completion:*' max-errors 4
+      zstyle ':completion:*:descriptions' format $'\e[1;35m--- %d ---\e[0m'
+      zstyle ':completion:*:messages' format $'\e[1;31m--- %d ---\e[0m'
+      zstyle ':completion:*:warnings' format $'\e[1;31mNo matches found for:\e[0m %d'
+
+      zstyle ':completion:*' menu select=2
+
+      zstyle ':completion:*:default' list-colors ''${(s.:.)LS_COLORS}
+
+      zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+      zstyle ':completion:*' matcher-list "" 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*' 'l:|=*'
+      zstyle ':completion:*' max-errors 2
       zstyle ':completion:*' use-compctl true
       zstyle ':completion:*' verbose true
-      zstyle ':completion:*' menu select
 
-      # Syntax highlight colours
+      zstyle ':completion:*' use-cache on
+      zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
+
+      zstyle ':completion:*' ignore-parents parent pwd
+
       typeset -A ZSH_HIGHLIGHT_STYLES
       ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
       ZSH_HIGHLIGHT_STYLES[alias]='fg=green'
       ZSH_HIGHLIGHT_STYLES[builtin]='fg=cyan'
       ZSH_HIGHLIGHT_STYLES[function]='fg=magenta'
       ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red,underline'
+
+      ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
       # Key bindings
       bindkey "^[[1;3C" forward-word   # Alt+Right
@@ -140,9 +143,13 @@
       bindkey '^F'      forward-char   # Ctrl+F
       bindkey '^f'      forward-word
       bindkey '^ '      forward-to-word
+      bindkey "^[[1;5C" forward-word       # Ctrl+Right
+      bindkey "^[[1;5D" backward-word      # Ctrl+Left
+      bindkey "^H" backward-kill-word      # Ctrl+Backspace (Most terminals send ^H or ^?)
+      bindkey '^?' backward-kill-word      # Alternative fallback for Ctrl+Backspace
+      bindkey "^[[3;5~" kill-word          # Ctrl+Delete
+      bindkey '^[[C'    forward-char
 
-      # OPTIMIZATION: Run any-nix-shell asynchronously or check cleanly
-      # This still integrates any-nix-shell but skips costly pipe streams where possible
       if command -v any-nix-shell >/dev/null; then
         source <(any-nix-shell zsh --info-right)
       fi

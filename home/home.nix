@@ -4,13 +4,16 @@
     inherit username stateVersion;
     homeDirectory = dir;
 
-    sessionVariables.EDITOR = "emacsclient -ca ''";
+    sessionVariables = {
+      EDITOR    = "emacsclient -ca ''";
+      MANPAGER  = "nvim +Man!";
+      TERM      = "xterm-256color";
+      COLORTERM = "truecolor";
 
-    pointerCursor = {
-      gtk.enable = true;
-      package = pkgs.oreo-cursors-plus;
-      name = "oreo_purple_cursors";
-      size = 24;
+      # QT Environment Enforcements
+      QT_QPA_PLATFORM         = "wayland;xcb";
+      QT_QPA_PLATFORMTHEME    = "qt5ct";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     };
 
     # Dotfiles managed as mutable symlinks outside the Nix store
@@ -41,20 +44,6 @@
         ".config/qtile"       = link "dotfiles/config/qtile";
         ".config/starship.toml" = linkFile "dotfiles/config/starship.toml";
       };
-  };
-
-  gtk = {
-    enable = true;
-    font = {
-      name = "Monaspace Neon Frozen";
-      size = 10;
-    };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "kvantum";
-    style.name = "kvantum";
   };
 
   dconf.settings = {

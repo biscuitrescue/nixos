@@ -12,6 +12,7 @@
     cloudflare-warp
     openvpn
     tailscale
+    distrobox
 
     # Editors
     vim

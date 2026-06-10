@@ -1,4 +1,10 @@
-{ pkgs, inputs, system, ... }: {
+{
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
+{
   home.packages = with pkgs; [
     # Hyprland ecosystem
     hypridle
@@ -12,6 +18,12 @@
     pavucontrol
     easyeffects
     playerctl
+
+    # Qt Styling Utilities
+    libsForQt5.qt5ct
+    kdePackages.qt6ct
+    libsForQt5.qtstyleplugin-kvantum
+    kdePackages.qtstyleplugin-kvantum
 
     # Terminals / shell tools
     kitty
@@ -53,7 +65,12 @@
     libtool
     sqlite
     cmake
-    
+    rustc
+    cargo
+    rustfmt
+    clippy
+    rust-analyzer
+
     # Wayland utilities
     grim
     slurp
@@ -107,6 +124,11 @@
     nix-index.enable = true;
 
     fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    zoxide = {
       enable = true;
       enableZshIntegration = true;
     };
