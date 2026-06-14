@@ -35,7 +35,6 @@
     let
       system = "x86_64-linux";
 
-      # Central vars — change here, propagates everywhere
       vars = {
         username = "cafo";
         stateVersion = "26.11";
@@ -64,7 +63,7 @@
 
         modules = [
           ./nixos/configuration.nix
-          nixos-hardware.nixosModules.lenovo-ideapad-slim-5
+          # nixos-hardware.nixosModules.lenovo-ideapad-slim-5
           {
             nixpkgs.config.allowUnfree = true;
           }
@@ -74,7 +73,8 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
-              extraSpecialArgs = extraSpecialArgs // { inherit pkgs; };
+
+              extraSpecialArgs = extraSpecialArgs;
 
               users.${vars.username} = {
                 imports = homeModules;

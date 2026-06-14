@@ -95,6 +95,7 @@
     brave
     onlyoffice-desktopeditors
     sunshine
+    kdePackages.gwenview
 
     # CLI toys / utilities
     fastfetch

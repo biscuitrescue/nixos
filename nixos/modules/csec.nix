@@ -9,6 +9,9 @@
 
   environment.systemPackages = with pkgs; [
     nmap
+    dnsrecon
+    enum4linux
+
     tcpdump
     netcat-openbsd
     masscan
@@ -17,12 +20,20 @@
     dig.dnsutils
 
     burpsuite
+    nikto
     gobuster
     ffuf
     sqlmap
 
+    metasploit
+    sqlmap
+    netcat
+    socat
+    wireshark
+
     hashcat
     john
     thc-hydra
+    hashid
   ];
 }

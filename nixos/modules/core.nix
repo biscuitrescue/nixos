@@ -37,7 +37,10 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware = {
-    bluetooth.powerOnBoot = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+    };
     graphics.enable = true;
     amdgpu.opencl.enable = true;
   };
