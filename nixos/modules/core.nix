@@ -73,7 +73,6 @@
 
   security = {
     polkit.enable = true;
-    # Use Nix-managed paths, not /usr/bin (doesn't exist on NixOS)
     sudo.extraConfig = ''
       %wheel ALL= NOPASSWD: /run/current-system/sw/bin/systemctl, /run/current-system/sw/bin/swapon, /run/current-system/sw/bin/swapoff, /run/current-system/sw/bin/rfkill
       Defaults env_reset, pwfeedback

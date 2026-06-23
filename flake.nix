@@ -63,7 +63,7 @@
 
         modules = [
           ./nixos/configuration.nix
-          # nixos-hardware.nixosModules.lenovo-ideapad-slim-5
+          nixos-hardware.nixosModules.lenovo-ideapad-slim-5
           {
             nixpkgs.config.allowUnfree = true;
           }

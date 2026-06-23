@@ -96,6 +96,8 @@
     onlyoffice-desktopeditors
     sunshine
     kdePackages.gwenview
+    audacious
+    audacious-plugins
 
     # CLI toys / utilities
     fastfetch

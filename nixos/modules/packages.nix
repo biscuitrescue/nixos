@@ -16,6 +16,9 @@
 
     # Editors
     vim
+    mu
+    isync
+    msmtp
 
     # Compilers / build tools
     clang
@@ -33,6 +36,7 @@
     exfat
     exfatprogs
     pulseaudio   # pactl CLI; pipewire is the actual daemon
+    proton-vpn
 
     # Diagnostics / monitoring
     baobab
