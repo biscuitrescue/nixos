@@ -41,7 +41,10 @@
       enable = true;
       powerOnBoot = false;
     };
-    graphics.enable = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
     amdgpu.opencl.enable = true;
   };
 

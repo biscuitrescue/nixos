@@ -44,10 +44,21 @@
 
     # Languages
     python314
+
+    # gaming
+    mangohud
+    gamemode
+    vkbasalt
   ];
 
   programs = {
     command-not-found.enable = false;
+
+    gamemode.enable = true;
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+    };
 
     zsh = {
       enable = true;
