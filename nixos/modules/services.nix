@@ -1,11 +1,14 @@
 { pkgs, ... }: {
   services = {
+    mullvad-vpn.enable = true;
+    resolved.enable = true;
     gvfs.enable = true;
     samba.enable = true;
     dbus.enable = true;
     blueman.enable = true;
     tailscale.enable = true;
     gnome.gnome-keyring.enable = true;
+    logind.settings.Login.HandleLidSwitchDocked = "ignore";
 
     emacs = {
       enable = true;

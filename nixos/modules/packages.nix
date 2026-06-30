@@ -9,6 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     # Networking / VPN
+    mullvad-vpn
     cloudflare-warp
     openvpn
     tailscale
