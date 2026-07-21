@@ -38,6 +38,9 @@
     exfatprogs
     pulseaudio   # pactl CLI; pipewire is the actual daemon
     proton-vpn
+    picom
+    remmina
+    anydesk
 
     # Diagnostics / monitoring
     baobab
@@ -50,11 +53,26 @@
     mangohud
     gamemode
     vkbasalt
+
+    spotify
   ];
 
   programs = {
     command-not-found.enable = false;
-
+    dsearch = {
+      enable = true;
+      systemd = {
+        enable = true;               # Enable systemd user service
+        target = "default.target";   # Start with user session
+      };
+    };
+    dms-shell = {
+      enable = true;
+      systemd = {
+        enable = true;
+        restartIfChanged = true;
+      };
+    };
     gamemode.enable = true;
     steam = {
       enable = true;

@@ -30,6 +30,7 @@
     enable = true;
     autocd = true;
     defaultKeymap = "emacs";
+    enableCompletion = true;
 
     history = {
       size = 100000;
@@ -50,7 +51,7 @@
 
     syntaxHighlighting = {
       enable = true;
-      highlighters = [ "main" "brackets" "cursor" ];
+      highlighters = [ "main" "brackets" "cursor" "root" ];
       styles = {
         "command" = "fg=green,bold";
         "alias" = "fg=green";
@@ -71,7 +72,8 @@
     sessionVariables = {
       ZSH_AUTOSUGGEST_USE_ASYNC = "true";
       ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE = "20";
-      
+      ZSH_AUTOSUGGEST_MANUAL_REBIND = "1";
+
       FZF_DEFAULT_OPTS = ''
         --color=bg+:#293334,bg:#0c0c0c,spinner:#da627d,hl:#F02D3A
         --color=fg:#bdc4a7,header:#987284,info:#7e8dba,pointer:#9FC490
@@ -131,25 +133,21 @@
     };
 
     initContent = ''
-      # Completion Settings
-      zstyle ':completion::*:*' accept-exact-dirs 'yes'
-      zstyle ':completion:*:expand:*' tag-order 'all-expansions'
-      zstyle ':completion:*' group-name ""
-      zstyle ':completion:*:descriptions' format $'\e[1;35m--- %d ---\e[0m'
-      zstyle ':completion:*:messages' format $'\e[1;31m--- %d ---\e[0m'
-      zstyle ':completion:*:warnings' format $'\e[1;31mNo matches found for:\e[0m %d'
-      zstyle ':completion:*' menu select=2
-      zstyle ':completion:*:default' list-colors "''${(s.:.)LS_COLORS}"
       zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
       zstyle ':completion:*' matcher-list "" 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*' 'l:|=*'
-      zstyle ':completion:*' max-errors 2
-      zstyle ':completion:*' use-compctl true
+
+      zstyle ':completion:*' menu select=1
+      zstyle ':completion:*' select-prompt '%SScrolling active: Line %l (%p)%s'
+      zstyle ':completion:*:default' list-colors "''${(s.:.)LS_COLORS}"
+
+      zstyle ':completion:*' group-name ""
       zstyle ':completion:*' verbose true
       zstyle ':completion:*' use-cache on
       zstyle ':completion:*' cache-path "''${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompcache"
-      zstyle ':completion:*' ignore-parents parent pwd
+      zstyle ':completion:*:descriptions' format $'\e[1;35m--- %d ---\e[0m'
+      zstyle ':completion:*:messages' format $'\e[1;31m--- %d ---\e[0m'
+      zstyle ':completion:*:warnings' format $'\e[1;31mNo matches found for:\e[0m %d'
 
-      # Custom Path additions
       typeset -U path
       path=(
         "$HOME/.cargo/bin"
@@ -160,27 +158,35 @@
         $path
       )
 
-      # Keybindings (Using \e instead of raw Ctrl chords to prevent Nix evaluation traps)
       bindkey '^?' backward-delete-char
       bindkey '^H' backward-delete-char
+
+      autoload -U select-word-style
+      select-word-style shell
+
+      bindkey '^W'      backward-kill-word
       bindkey '^[[3J'   backward-kill-word
       bindkey '\e^?'    backward-kill-word
       bindkey '\e^H'    backward-kill-word
-      bindkey '^W'      backward-kill-word
+      bindkey '\e[127;5u' backward-kill-word # Modern terminal representation
       bindkey "^[[3;5~" kill-word
-      bindkey "^[[1;3C" forward-word
-      bindkey "^[[1;3D" backward-word
-      bindkey "\e[f"    forward-word
-      bindkey "\e[b"    backward-word
-      bindkey "^[[1;5C" forward-word
-      bindkey "^[[1;5D" backward-word
-      bindkey '^E'      end-of-line
-      bindkey '^A'      beginning-of-line
-      bindkey '^F'      forward-char
-      bindkey '^B'      backward-char
-      bindkey '^f'      forward-word
-      bindkey '^ '      forward-to-word
-      bindkey '^[[C'    forward-char
+
+      bindkey "^[[1;3C" forward-word       # Alt + Right
+      bindkey "^[[1;3D" backward-word      # Alt + Left
+      bindkey "\e[f"    forward-word       # Alt + F
+      bindkey "\e[b"    backward-word      # Alt + B
+      bindkey "^[[1;5C" forward-word       # Ctrl + Right
+      bindkey "^[[1;5D" backward-word      # Ctrl + Left
+      bindkey '^E'      end-of-line        # Ctrl + E
+      bindkey '^A'      beginning-of-line  # Ctrl + A
+
+      bindkey '^[[C'    autosuggest-accept
+      bindkey '^F'      autosuggest-accept
+      bindkey '^E'      autosuggest-accept
+
+      bindkey '^[[1;3C' autosuggest-accept-partial-word
+      bindkey '\e[f'    autosuggest-accept-partial-word
+      bindkey '^ '      autosuggest-accept-partial-word
 
       if command -v any-nix-shell >/dev/null; then
         source <(any-nix-shell zsh --info-right)

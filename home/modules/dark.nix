@@ -7,11 +7,11 @@
     };
     theme = {
       package = pkgs.colloid-gtk-theme;
-      name    = "Colloid-Dark";
+      name    = "Colloid-Light";
     };
     iconTheme = {
       package = pkgs.papirus-icon-theme;
-      name    = "Papirus-Dark";
+      name    = "Papirus-Light";
     };
     gtk4.theme = config.gtk.theme;
   };
@@ -21,6 +21,7 @@
     style.name = "kvantum";       # Uses Kvantum as the rendering style engine
   };
   home.pointerCursor = {
+    enable = true;
     gtk.enable = true;
     package = pkgs.oreo-cursors-plus;
     name = "oreo_purple_cursors";

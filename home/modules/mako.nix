@@ -13,7 +13,7 @@
       margin            = 10;
       icons             = true;
       actions           = true;
-      output            = "eDP-1";
+      # output            = "eDP-1";
     };
   };
 }

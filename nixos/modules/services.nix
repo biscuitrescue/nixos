@@ -10,30 +10,49 @@
     gnome.gnome-keyring.enable = true;
     logind.settings.Login.HandleLidSwitchDocked = "ignore";
 
+    displayManager.dms-greeter = {
+        enable = true;
+        compositor = {
+            name = "hyprland";
+        };
+
+        configHome = "/home/cafo";
+
+        configFiles = [
+            "/home/cafo/.config/DankMaterialShell/settings.json"
+        ];
+
+        logs = {
+            save = true;
+            path = "/tmp/dms-greeter.log";
+        };
+
+    };
+
     emacs = {
       enable = true;
       package = pkgs.emacs-pgtk;
       install = true;
     };
 
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_AC  = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "performance";
-        CPU_ENERGY_PERF_POLICY_ON_AC  = "performance";
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "performance";
-
-        CPU_MIN_PERF_ON_AC  = 0;
-        CPU_MAX_PERF_ON_AC  = 100;
-        CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 80;
-
-        # Battery health thresholds
-        START_CHARGE_THRESH_BAT0 = 40;
-        STOP_CHARGE_THRESH_BAT0  = 80;
-      };
-    };
+    # tlp = {
+    #   enable = true;
+    #   settings = {
+    #     CPU_SCALING_GOVERNOR_ON_AC  = "performance";
+    #     CPU_SCALING_GOVERNOR_ON_BAT = "performance";
+    #     CPU_ENERGY_PERF_POLICY_ON_AC  = "performance";
+    #     CPU_ENERGY_PERF_POLICY_ON_BAT = "performance";
+    #
+    #     CPU_MIN_PERF_ON_AC  = 0;
+    #     CPU_MAX_PERF_ON_AC  = 100;
+    #     CPU_MIN_PERF_ON_BAT = 0;
+    #     CPU_MAX_PERF_ON_BAT = 80;
+    #
+    #     # Battery health thresholds
+    #     START_CHARGE_THRESH_BAT0 = 40;
+    #     STOP_CHARGE_THRESH_BAT0  = 80;
+    #   };
+    # };
 
     libinput = {
       enable = true;
@@ -68,6 +87,13 @@
         support32Bit = true;
       };
       pulse.enable = true;
+      wireplumber.extraConfig = {
+          "bluetooth" = {
+              "monitor.bluez.properties" = {
+                  "bluez5.codecs" = [ "sbc" "sbc_xq" "aac" "ldac" ];
+              };
+          };
+      };
     };
   };
 }

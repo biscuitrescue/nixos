@@ -98,6 +98,7 @@
     kdePackages.gwenview
     audacious
     audacious-plugins
+    discord
 
     # CLI toys / utilities
     fastfetch
